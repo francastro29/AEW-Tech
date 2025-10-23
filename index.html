@@ -1,368 +1,182 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CT Scanner Repair & Sales | Medical Equipment</title>
-    <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Bootstrap Icons -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
-    <link rel="stylesheet" href="styles.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AEW-Tech | Home</title>
+<link rel="icon" href="images/logoaewcortado.jpeg" type="image/png">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<style>
+body { font-family: 'Inter', sans-serif; background: #f8f9fa; color: #0b1220; }
+
+/* Hero */
+.hero-section {
+  position: relative;
+  background: url('images/background.jpg') center/cover no-repeat;
+  padding: 80px 20px;
+  border-radius: 12px;
+  text-align: center;
+  color: #ffffff; /* letras blancas para que resalten sobre la imagen */
+  overflow: hidden;
+}
+
+/* Overlay oscuro */
+.hero-section::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5); /* 50% de negro */
+  z-index: 0;
+}
+
+/* Texto y botones por encima del overlay */
+.hero-section h1,
+.hero-section p,
+.hero-section .btn {
+  position: relative;
+  z-index: 1;
+}
+
+.hero-section h1 { font-size: 2.8rem; font-weight: 800; margin-bottom: 20px; }
+.hero-section p { font-size: 1.2rem; margin-bottom: 30px; }
+.hero-section .btn { border-radius: 50px; font-weight: 600; }
+
+/* Quick Pills */
+.pill { 
+    background: linear-gradient(135deg, #3d8fff, #1e5bff) !important;
+    color: #fff !important;
+    font-weight: 700 !important;
+    padding: 6px 14px;
+    border-radius: 50px;
+    font-size: 0.9rem;
+    box-shadow: 0 6px 20px rgba(62, 143, 255, 0.35);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    transition: all 0.3s ease !important;
+    cursor: pointer;
+}
+
+.pill:hover {
+    background: linear-gradient(135deg, #4d98ff, #2e6eff) !important;
+    transform: translateY(-3px) scale(1.05);
+    box-shadow: 0 10px 30px rgba(62, 143, 255, 0.5);
+    border: 1px solid rgba(255, 255, 255, 0.5);
+}
+.pill { background: #f5f7fb; padding: 6px 14px; border-radius: 50px; font-size: 0.9rem; }
+
+/* Capabilities Cards */
+.capabilities .card { border-radius: 12px; padding: 25px; box-shadow: 0 4px 20px rgba(0,0,0,.08); transition: transform .2s; }
+.capabilities .card:hover { transform: translateY(-5px); }
+.capabilities .card h5 { font-weight: 700; margin-bottom: 10px; }
+.capabilities .card p { color: #475569; }
+.capabilities .card .icon { font-size: 2rem; margin-bottom: 10px; }
+
+/* Navbar overrides */
+.navbar-brand img { height: 40px; }
+</style>
 </head>
-<body data-bs-spy="scroll" data-bs-target="#navbar" data-bs-offset="70">
-    <!-- Navbar -->
-    <nav id="navbar" class="navbar navbar-expand-lg navbar-dark fixed-top">
-        <div class="container">
-            <a class="navbar-brand d-flex align-items-center" href="#inicio">
-                <i class="bi bi-heart-pulse-fill me-2 fs-4"></i>
-                <span class="fw-bold">Medical Equipment</span>
-            </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" href="#inicio">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#servicios">Services</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#equipos">Equipment</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#contacto">Contact</a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </nav>
+<body>
 
-    <!-- Hero Section -->
-    <section id="inicio" class="hero-section">
-        <div class="container text-center text-white">
-            <div class="row justify-content-center">
-                <div class="col-lg-8" data-aos="fade-up">
-                    <h1 class="display-3 fw-bold mb-4 animate-title">Specialists in CT Scanners & Medical Equipment</h1>
-                    <p class="lead mb-4 fs-4">Repair, maintenance, and sales of medical imaging equipment with over 20 years of experience</p>
-                    <a href="#contacto" class="btn btn-light btn-lg px-5 shadow-lg btn-hover">
-                        <i class="bi bi-envelope-fill me-2"></i>Contact Us
-                    </a>
-                </div>
-            </div>
-        </div>
-        <div class="hero-overlay"></div>
-    </section>
-
-    <!-- About Us / What We Do -->
-    <section id="sobre-nosotros" class="py-5 bg-light">
-        <div class="container py-5">
-            <div class="row align-items-center g-4" data-aos="fade-up">
-                <div class="col-lg-6">
-                    <img src="https://enula.org/wp-content/uploads/2017/12/pet-cnea.jpg" alt="CT Scanner Repair" class="img-fluid rounded shadow">
-                </div>
-                <div class="col-lg-6">
-                    <h2 class="fw-bold text-primary mb-3">Who We Are</h2>
-                    <p class="lead text-muted">
-                        We are specialists in the repair, maintenance, and sale of CT scanners and medical imaging equipment. 
-                        With over 20 years of experience, we guarantee professional service and reliable solutions for clinics and hospitals.
-                    </p>
-                    <a href="#contacto" class="btn btn-primary mt-3">
-                        <i class="bi bi-envelope-fill me-2"></i>Contact Us
-                    </a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Services Section -->
-    <section id="servicios" class="py-5 bg-light">
-        <div class="container py-5">
-            <div class="text-center mb-5" data-aos="fade-up">
-                <h2 class="display-4 fw-bold text-primary mb-3">Our Services</h2>
-                <p class="lead text-muted">Comprehensive solutions for medical equipment</p>
-            </div>
-            <div class="row g-4">
-                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
-                    <div class="card h-100 border-0 shadow-hover service-card">
-                        <div class="card-body text-center p-4">
-                            <div class="icon-box mb-3">
-                                <i class="bi bi-tools fs-1 text-primary"></i>
-                            </div>
-                            <h5 class="card-title fw-bold mb-3">CT Scanner Repair</h5>
-                            <p class="card-text text-muted">Specialized technical service for all types of CT scanners. Accurate diagnosis and professional repair.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
-                    <div class="card h-100 border-0 shadow-hover service-card">
-                        <div class="card-body text-center p-4">
-                            <div class="icon-box mb-3">
-                                <i class="bi bi-gear-fill fs-1 text-primary"></i>
-                            </div>
-                            <h5 class="card-title fw-bold mb-3">Preventive Maintenance</h5>
-                            <p class="card-text text-muted">Scheduled maintenance plans to ensure optimal performance and extend equipment lifespan.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="300">
-                    <div class="card h-100 border-0 shadow-hover service-card">
-                        <div class="card-body text-center p-4">
-                            <div class="icon-box mb-3">
-                                <i class="bi bi-arrow-repeat fs-1 text-primary"></i>
-                            </div>
-                            <h5 class="card-title fw-bold mb-3">Refurbishment</h5>
-                            <p class="card-text text-muted">We restore used equipment to optimal working conditions with quality assurance.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="400">
-                    <div class="card h-100 border-0 shadow-hover service-card">
-                        <div class="card-body text-center p-4">
-                            <div class="icon-box mb-3">
-                                <i class="bi bi-box-seam fs-1 text-primary"></i>
-                            </div>
-                            <h5 class="card-title fw-bold mb-3">Installation & Commissioning</h5>
-                            <p class="card-text text-muted">Professional installation, calibration, and staff training for correct equipment use.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="500">
-                    <div class="card h-100 border-0 shadow-hover service-card">
-                        <div class="card-body text-center p-4">
-                            <div class="icon-box mb-3">
-                                <i class="bi bi-lightbulb-fill fs-1 text-primary"></i>
-                            </div>
-                            <h5 class="card-title fw-bold mb-3">Technical Consulting</h5>
-                            <p class="card-text text-muted">Specialized advice for acquiring and optimizing imaging equipment.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="600">
-                    <div class="card h-100 border-0 shadow-hover service-card">
-                        <div class="card-body text-center p-4">
-                            <div class="icon-box mb-3">
-                                <i class="bi bi-wrench-adjustable fs-1 text-primary"></i>
-                            </div>
-                            <h5 class="card-title fw-bold mb-3">Original Parts</h5>
-                            <p class="card-text text-muted">Supply of original parts and components for all brands and models.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Equipment Section -->
-    <section id="equipos" class="py-5">
-        <div class="container py-5">
-            <div class="text-center mb-5" data-aos="fade-up">
-                <h2 class="display-4 fw-bold text-primary mb-3">Available Equipment</h2>
-                <p class="lead text-muted">High-quality refurbished CT scanners</p>
-            </div>
-            <div class="row g-4">
-                <div class="col-lg-3 col-md-6" data-aos="zoom-in" data-aos-delay="100">
-                    <div class="card h-100 border-0 shadow-hover equipment-card">
-                        <div class="equipment-img-wrapper">
-                            <div class="equipment-image">
-                                <i class="bi bi-hospital"></i>
-                            </div>
-                            <span class="badge-status badge bg-success">Available</span>
-                        </div>
-                        <div class="card-body">
-                            <h5 class="card-title fw-bold text-primary">GE BrightSpeed CT Scanner</h5>
-                            <p class="card-text text-muted small">16 slices, newly refurbished. Excellent working condition.</p>
-                            <button class="btn btn-outline-primary btn-sm w-100 mt-2" data-bs-toggle="modal" data-bs-target="#modalEquipo1">
-                                <i class="bi bi-info-circle me-1"></i>View Details
-                            </button>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6" data-aos="zoom-in" data-aos-delay="200">
-                    <div class="card h-100 border-0 shadow-hover equipment-card">
-                        <div class="equipment-img-wrapper">
-                            <div class="equipment-image">
-                                <i class="bi bi-hospital"></i>
-                            </div>
-                            <span class="badge-status badge bg-success">Available</span>
-                        </div>
-                        <div class="card-body">
-                            <h5 class="card-title fw-bold text-primary">Siemens Emotion CT Scanner</h5>
-                            <p class="card-text text-muted small">6 slices, ideal for small clinics. Complete maintenance performed.</p>
-                            <button class="btn btn-outline-primary btn-sm w-100 mt-2" data-bs-toggle="modal" data-bs-target="#modalEquipo2">
-                                <i class="bi bi-info-circle me-1"></i>View Details
-                            </button>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6" data-aos="zoom-in" data-aos-delay="300">
-                    <div class="card h-100 border-0 shadow-hover equipment-card">
-                        <div class="equipment-img-wrapper">
-                            <div class="equipment-image">
-                                <i class="bi bi-hospital"></i>
-                            </div>
-                            <span class="badge-status badge bg-danger">Sold</span>
-                        </div>
-                        <div class="card-body">
-                            <h5 class="card-title fw-bold text-muted">Philips MX8000 CT Scanner</h5>
-                            <p class="card-text text-muted small">16 slices, with a new X-ray tube. Ready for installation.</p>
-                            <button class="btn btn-outline-secondary btn-sm w-100 mt-2" disabled>
-                                <i class="bi bi-check-circle me-1"></i>Sold
-                            </button>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6" data-aos="zoom-in" data-aos-delay="400">
-                    <div class="card h-100 border-0 shadow-hover equipment-card">
-                        <div class="equipment-img-wrapper">
-                            <div class="equipment-image">
-                                <i class="bi bi-hospital"></i>
-                            </div>
-                            <span class="badge-status badge bg-success">Available</span>
-                        </div>
-                        <div class="card-body">
-                            <h5 class="card-title fw-bold text-primary">Toshiba Aquilion CT Scanner</h5>
-                            <p class="card-text text-muted small">64 slices, high resolution. Fully refurbished.</p>
-                            <button class="btn btn-outline-primary btn-sm w-100 mt-2" data-bs-toggle="modal" data-bs-target="#modalEquipo4">
-                                <i class="bi bi-info-circle me-1"></i>View Details
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Contact Section -->
-    <section id="contacto" class="py-5 bg-primary text-white">
-        <div class="container py-5">
-            <div class="text-center mb-5" data-aos="fade-up">
-                <h2 class="display-4 fw-bold mb-3">Contact Us</h2>
-                <p class="lead">We are here to help you with your medical equipment needs</p>
-            </div>
-            <div class="row g-4 justify-content-center">
-                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
-                    <div class="contact-card text-center p-4">
-                        <div class="icon-circle mb-3">
-                            <i class="bi bi-telephone-fill fs-2"></i>
-                        </div>
-                        <h5 class="fw-bold mb-2">Phone</h5>
-                        <p class="mb-0">+1 (305) 510-4789</p>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
-                    <div class="contact-card text-center p-4">
-                        <div class="icon-circle mb-3">
-                            <i class="bi bi-envelope-fill fs-2"></i>
-                        </div>
-                        <h5 class="fw-bold mb-2">Email</h5>
-                        <p class="mb-0">info@medicalequipment.com</p>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="300">
-                    <div class="contact-card text-center p-4">
-                        <div class="icon-circle mb-3">
-                            <i class="bi bi-geo-alt-fill fs-2"></i>
-                        </div>
-                        <h5 class="fw-bold mb-2">Location</h5>
-                        <p class="mb-0">Miami, Florida, United States</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="bg-dark text-white text-center py-4">
-        <div class="container">
-            <p class="mb-2">&copy; 2025 Medical Equipment. All rights reserved.</p>
-            <p class="mb-0 text-muted">Specialists in Medical Imaging</p>
-        </div>
-    </footer>
-
-    <!-- Equipment Modals -->
-    <div class="modal fade" id="modalEquipo1" tabindex="-1">
-        <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title fw-bold text-primary">GE BrightSpeed CT Scanner</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-                </div>
-                <div class="modal-body">
-                    <p><strong>Specifications:</strong></p>
-                    <ul>
-                        <li>16 slices</li>
-                        <li>Newly refurbished</li>
-                        <li>Excellent working condition</li>
-                        <li>Warranty included</li>
-                    </ul>
-                    <p class="text-muted">Contact us for more information and pricing.</p>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <a href="#contacto" class="btn btn-primary" data-bs-dismiss="modal">Request Quote</a>
-                </div>
-            </div>
-        </div>
+<!-- NAVBAR -->
+<nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm sticky-top">
+  <div class="container">
+    <a class="navbar-brand d-flex align-items-center" href="index.html">
+      <img src="images/logomartin.jpeg" alt="AEW-Tech logo">
+      <span class="ms-2 fw-bold">AEW-Tech</span>
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item"><a class="nav-link active" href="index.html">Home</a></li>
+        <li class="nav-item"><a class="nav-link" href="services.html">Services</a></li>
+        <li class="nav-item"><a class="nav-link" href="contacts.html">Contact</a></li>
+        <li class="nav-item"><a class="nav-link" href="global.html">Global Support</a></li>
+      </ul>
     </div>
+  </div>
+</nav>
 
-    <div class="modal fade" id="modalEquipo2" tabindex="-1">
-        <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title fw-bold text-primary">Siemens Emotion CT Scanner</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-                </div>
-                <div class="modal-body">
-                    <p><strong>Specifications:</strong></p>
-                    <ul>
-                        <li>6 slices</li>
-                        <li>Ideal for small clinics</li>
-                        <li>Complete maintenance performed</li>
-                        <li>Ready to use</li>
-                    </ul>
-                    <p class="text-muted">Contact us for more information and pricing.</p>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <a href="#contacto" class="btn btn-primary" data-bs-dismiss="modal">Request Quote</a>
-                </div>
-            </div>
-        </div>
+<!-- HERO -->
+<section class="hero-section mb-5">
+  <div class="container">
+    <h1>Board-Level Repairs & Parts for Imaging Systems</h1>
+    <p>Gradient & RF power amplifiers, coils, system boards, injectors, helium compressors, and more—bench-tested for reliability and backed by responsive support.</p>
+
+    <div class="pills-container">
+      <span class="pill">Gradient & RF Amps</span>
+      <span class="pill">Coils & Injectors</span>
+      <span class="pill">Helium Compressors</span>
+      <span class="pill">Boards & Power</span>
+      <span class="pill">Exchange Programs</span>
     </div>
+  </div>
+</section>
 
-    <div class="modal fade" id="modalEquipo4" tabindex="-1">
-        <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title fw-bold text-primary">Toshiba Aquilion CT Scanner</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-                </div>
-                <div class="modal-body">
-                    <p><strong>Specifications:</strong></p>
-                    <ul>
-                        <li>64 slices</li>
-                        <li>High resolution</li>
-                        <li>Fully refurbished</li>
-                        <li>Advanced technology</li>
-                    </ul>
-                    <p class="text-muted">Contact us for more information and pricing.</p>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <a href="#contacto" class="btn btn-primary" data-bs-dismiss="modal">Request Quote</a>
-                </div>
-            </div>
-        </div>
+<!-- CAPABILITIES -->
+<section class="container capabilities mb-5">
+  <div class="text-center mb-5">
+    <h2 class="fw-bold">Our Capabilities</h2>
+    <p>Comprehensive Support for MRI & CT Systems</p>
+  </div>
+  <div class="row g-4">
+    <div class="col-md-6 col-lg-4">
+      <div class="card text-center h-100">
+        <div class="icon">⚙️</div>
+        <h5>Gradient & RF Amplifiers</h5>
+        <p>Precision-tested repairs and full-load validation for reliable magnet control performance.</p>
+      </div>
     </div>
+    <div class="col-md-6 col-lg-4">
+      <div class="card text-center h-100">
+        <div class="icon">❄️</div>
+        <h5>Helium Compressors</h5>
+        <p>Rebuilt, oil-flushed, and pressure-verified compressors to maintain optimal magnet temperature.</p>
+      </div>
+    </div>
+    <div class="col-md-6 col-lg-4">
+      <div class="card text-center h-100">
+        <div class="icon">🧲</div>
+        <h5>Coils & Injectors</h5>
+        <p>Patient-safety validated repairs and exchanges for body, knee, and specialty coils.</p>
+      </div>
+    </div>
+    <div class="col-md-6 col-lg-4">
+      <div class="card text-center h-100">
+        <div class="icon">🔋</div>
+        <h5>System Boards & Power Supplies</h5>
+        <p>Component-level restoration with full load testing and functional QA certification.</p>
+      </div>
+    </div>
+    <div class="col-md-6 col-lg-4">
+      <div class="card text-center h-100">
+        <div class="icon">🧰</div>
+        <h5>Accessories & Components</h5>
+        <p>From cables and cabinets to sensors and connectors — we supply and service them all.</p>
+      </div>
+    </div>
+  </div>
+</section>
 
-    <!-- Bootstrap JS Bundle -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    <!-- AOS Animation Library -->
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <script src="script.js"></script>
+<!-- FOOTER -->
+<footer class="bg-dark text-light text-center py-3">
+      </div>
+      <div class="d-flex flex-wrap justify-content-center gap-2">
+      <a href="contacts.html" class="btn btn-primary">Request Service</a>
+      <a href="tel:+13055104769" class="btn btn-outline-primary">Call (305) 510-4769</a>
+      <a href="https://wa.me/13053001328" target="_blank" rel="noopener" class="btn btn-success">WhatsApp</a>
+    </div>
+  <p class="mb-1">©️ 2025 AEW-Tech</p>
+  <div>
+    <a href="#" class="text-decoration-none text-info me-2">Privacy Policy</a>
+    <a href="#" class="text-decoration-none text-info">Terms of Service</a>
+
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/bootstrap.bundle.min.js"></script>
 </body>
 </html>

@@ -1,292 +1,486 @@
-:root {
-    --primary-color: #0066cc;
-    --secondary-color: #004999;
-    --light-bg: #f8f9fa;
-}
-
-* {
+/* ------------------------------
+   BASE
+------------------------------ */
+body, html {
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
+    font-family: Inter, system-ui, Segoe UI, Roboto, Arial, sans-serif;
+    color: #0b1220;
 }
 
-body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    overflow-x: hidden;
+a {
+    text-decoration: none;
+    color: inherit;
 }
 
-/* Navbar con glassmorphism */
-.navbar {
-    background: rgba(0, 102, 204, 0.95);
-    backdrop-filter: blur(10px);
-    transition: all 0.3s ease;
-    box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+a:hover {
+    color: #0a66b2;
 }
 
-.navbar.scrolled {
-    background: rgba(0, 102, 204, 1);
-    box-shadow: 0 2px 30px rgba(0, 0, 0, 0.2);
+/* ------------------------------
+   VARIABLES / THEME
+------------------------------ */
+:root {
+    --brand: #0a66b2;
+    --brand2: #0b8dda;
+    --ink: #0b1220;
+    --muted: #5b6474;
+    --soft: #f5f7fb;
+    --line: #e6ecf4;
+    --ok: #15a34a;
+    --cta: #105fb3;
+    --ctaH: #0a4a8a;
+    --radius: 16px;
 }
 
-.nav-link {
-    position: relative;
-    transition: all 0.3s ease;
-}
-
-.nav-link::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 50%;
-    width: 0;
-    height: 2px;
-    background: white;
-    transition: all 0.3s ease;
-    transform: translateX(-50%);
-}
-
-.nav-link:hover::after,
-.nav-link.active::after {
-    width: 80%;
-}
-
-/* Hero Section con gradiente animado */
-.hero-section {
-    position: relative;
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-image: url('https://noticiasdeazul.com/download/multimedia.normal.911f0bfabe80a7eb.VG9tw7NncmFmb19ub3JtYWwud2VicA%3D%3D.webp'); /* reemplaza con tu ruta */
-    background-size: cover;
-    background-position: center;
-    overflow: hidden;
-}
-.hero-overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0,0,0,0.4); /* oscurece la imagen para que el texto destaque */
-    z-index: 1;
-}
-.hero-section .container {
-    position: relative;
-    z-index: 2;
-}
-
-@keyframes fadeInUp {
-    from {
-        opacity: 0;
-        transform: translateY(30px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-.btn-hover {
-    position: relative;
-    overflow: hidden;
-    transition: all 0.3s ease;
-}
-
-.btn-hover::before {
-    content: '';
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 0;
-    height: 0;
-    border-radius: 50%;
-    background: rgba(0, 102, 204, 0.2);
-    transform: translate(-50%, -50%);
-    transition: width 0.6s, height 0.6s;
-}
-
-.btn-hover:hover::before {
-    width: 300px;
-    height: 300px;
-}
-
-.btn-hover:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
-}
-
-/* Service Cards con efecto de elevación */
-.service-card {
-    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    border-radius: 15px;
-    overflow: hidden;
-}
-
-.service-card:hover {
-    transform: translateY(-10px) scale(1.02);
-    box-shadow: 0 20px 40px rgba(0, 102, 204, 0.2) !important;
-}
-
-.icon-box {
-    width: 80px;
-    height: 80px;
+/* ------------------------------
+   WRAPPER / GRID
+------------------------------ */
+.aew-wrap {
+    max-width: 1200px;
     margin: 0 auto;
+    padding: 0 20px;
+}
+
+.grid {
+    display: grid;
+    gap: 24px;
+}
+
+/* ------------------------------
+   HEADER / NAV
+------------------------------ */
+.aew-header {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    backdrop-filter: saturate(1.2) blur(6px);
+    background: rgba(255, 255, 255, 0.9);
+    border-bottom: 1px solid var(--line);
+}
+
+.aew-header .bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 68px;
+    gap: 18px;
+}
+
+.aew-brand {
     display: flex;
     align-items: center;
-    justify-content: center;
-    background: linear-gradient(135deg, #e3f2fd 0%, #bbdefb 100%);
-    border-radius: 50%;
-    transition: all 0.3s ease;
+    gap: 12px;
 }
 
-.service-card:hover .icon-box {
-    transform: rotate(360deg) scale(1.1);
-    background: linear-gradient(135deg, #0066cc 0%, #004999 100%);
+.aew-logo {
+    height: 34px;
+    width: auto;
 }
 
-.service-card:hover .icon-box i {
-    color: white !important;
+.aew-name {
+    font-weight: 700;
+    letter-spacing: .2px;
+    font-size: 18px;
+    color: var(--ink);
 }
 
-.shadow-hover {
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
-    transition: all 0.3s ease;
-}
-
-.shadow-hover:hover {
-    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
-}
-
-/* Equipment Cards con efectos 3D */
-.equipment-card {
-    transition: all 0.4s ease;
-    border-radius: 15px;
-    overflow: hidden;
-    position: relative;
-}
-
-.equipment-card:hover {
-    transform: translateY(-15px) rotateX(5deg);
-    box-shadow: 0 20px 50px rgba(0, 102, 204, 0.3) !important;
-}
-
-.equipment-img-wrapper {
-    position: relative;
-    overflow: hidden;
-}
-
-.equipment-image {
-    height: 200px;
-    background: linear-gradient(135deg, #e3f2fd 0%, #bbdefb 100%);
+.aew-nav {
     display: flex;
+    gap: 22px;
     align-items: center;
-    justify-content: center;
-    transition: all 0.4s ease;
 }
 
-.equipment-image i {
-    font-size: 4rem;
-    color: var(--primary-color);
-    transition: all 0.4s ease;
+.aew-nav a {
+    font-weight: 600;
+    font-size: 15px;
+    color: var(--ink);
 }
 
-.equipment-card:hover .equipment-image {
-    background: linear-gradient(135deg, #bbdefb 0%, #90caf9 100%);
-    transform: scale(1.1);
+.aew-nav a:hover,
+.aew-nav a.active {
+    color: var(--brand);
 }
 
-.equipment-card:hover .equipment-image i {
-    transform: scale(1.2) rotate(10deg);
+/* ------------------------------
+   HERO SECTION (INDEX)
+------------------------------ */
+.aew-hero {
+    position: relative;
+    background:
+        radial-gradient(1200px 600px at 80% -10%, rgba(11,102,178,.35), transparent 60%),
+        radial-gradient(900px 500px at -10% 20%, rgba(218, 135, 11, 0.25), transparent 60%),
+        linear-gradient(180deg, #eef6ff 0%, #ffffff 60%);
+    border-bottom: 1px solid var(--line);
 }
 
-.badge-status {
-    position: absolute;
-    top: 15px;
-    right: 15px;
-    padding: 8px 15px;
-    font-size: 0.85rem;
+.aew-hero .grid {
+    display: grid;
+    grid-template-columns: 1.1fr .9fr;
+    gap: 24px;
+    padding: 72px 0;
+    align-items: center;
+    position: relative;
+    z-index: 5; /* asegura que hijos estén visibles sobre fondo */
+}
+
+.aew-eyebrow {
+    color: var(--brand);
+    font-weight: 700;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    font-size: 12px;
+    margin-bottom: 10px;
+}
+
+.aew-title {
+    font-size: 44px;
+    font-weight: 800;
+    margin-bottom: 14px;
+}
+
+.aew-sub {
+    font-size: 18px;
+    color: var(--muted);
+    margin-bottom: 26px;
+    max-width: 52ch;
+}
+
+.aew-cta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-bottom: 18px;
+}
+
+.btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 14px 18px;
+    border-radius: 999px;
+    font-weight: 700;
+    border: 2px solid transparent;
+    transition: .18s ease;
+    text-decoration: none;
+}
+
+.btn-primary {
+    background: var(--cta);
+    color: #fff;
+}
+
+.btn-primary:hover {
+    background: var(--ctaH);
+}
+
+.btn-ghost {
+    background: #fff;
+    border-color: var(--line);
+    color: var(--ink);
+}
+
+.btn-ghost:hover {
+    border-color: var(--brand);
+    color: var(--brand);
+}
+
+.aew-hero .shot {
+    aspect-ratio: 4 / 3;
+    border-radius: var(--radius);
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(26, 60, 139, 0.12);
+    border: 1px solid var(--line);
+    background: #fff url('https://images.unsplash.com/photo-1581091215367-59ab6dcef1b4?q=80&w=1366&auto=format&fit=crop') center/cover no-repeat;
+}
+
+/* ------------------------------
+   PILL STYLES (CORREGIDO)
+------------------------------ */
+.pills-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: 1rem;
+    position: relative;
     z-index: 10;
-    animation: pulse 2s infinite;
+    background-color: #0a66b2;
 }
 
-@keyframes pulse {
-    0%, 100% { transform: scale(1); }
-    50% { transform: scale(1.05); }
-}
 
-/* Contact Cards con efecto glow */
-.contact-card {
-    background: rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(10px);
-    border-radius: 15px;
-    transition: all 0.3s ease;
+.pill { 
+    display: inline-block;
+    padding: 0.6rem 1.2rem;
+    border-radius: 999px;
+    background: linear-gradient(135deg, #3d8fff, #1e5bff);
+    color: #fff !important;
+    font-weight: 700;
+    font-size: 0.95rem;
+    box-shadow: 0 6px 20px rgba(62, 143, 255, 0.35);
+    transition: transform 0.2s, box-shadow 0.2s;
+    cursor: default;
+    white-space: nowrap;
     border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
-.contact-card:hover {
-    background: rgba(255, 255, 255, 0.2);
-    transform: translateY(-10px);
-    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+.pill:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 28px rgba(62, 143, 255, 0.45);
 }
 
-.icon-circle {
-    width: 80px;
-    height: 80px;
+
+/* ------------------------------
+   CAPABILITIES
+------------------------------ */
+.aew-capabilities {
+    background: #fff;
+    border-top: 1px solid var(--line);
+    padding: 80px 20px;
+}
+
+.aew-capabilities h2 {
+    font-size: 34px;
+    font-weight: 800;
+    color: var(--brand);
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.aew-capabilities p.sub {
+    color: var(--muted);
+    font-size: 17px;
+    text-align: center;
+    margin-bottom: 60px;
+}
+
+.cap-item {
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    padding: 32px 24px;
+    background: #f9fafc;
+    box-shadow: 0 2px 8px rgba(0,0,0,.03);
+    transition: .25s;
+}
+
+.cap-item:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 6px 18px rgba(0,0,0,.06);
+}
+
+.cap-icon {
+    font-size: 40px;
+    color: var(--brand);
+    margin-bottom: 12px;
+    display: inline-block;
+}
+
+.cap-title {
+    font-weight: 700;
+    font-size: 18px;
+    margin-bottom: 8px;
+}
+
+.cap-desc {
+    color: var(--muted);
+    font-size: 15px;
+    line-height: 1.6;
+}
+
+/* ------------------------------
+   RESTO DEL CSS SIN CAMBIOS
+------------------------------ */
+/* ... mantengo todo igual ... */
+
+/* ------------------------------
+   SERVICES SECTION
+------------------------------ */
+.svc-hero, .svcA-hero {
+    text-align: center;
+    padding: 56px 16px 28px;
+}
+
+.svc-hero h1, .svcA-hero .copy h1 {
+    font-size: 42px;
+    margin-bottom: 10px;
+}
+
+.svc-hero p, .svcA-hero .copy p {
+    color: #4b5563;
+    font-size: 18px;
+}
+
+.svcA-hero {
+    background: #0b1a2a;
+    color: #fff;
+}
+
+.svcA-hero .wrap {
+    display: grid;
+    grid-template-columns: 1.05fr .95fr;
+    gap: 36px;
+    max-width: 1200px;
     margin: 0 auto;
+    padding: 56px 20px;
+}
+
+.svcA-hero .photo {
+    min-height: 300px;
+    border-radius: 14px;
+    background: url('https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?q=80&w=1600&auto=format&fit=crop') center/cover;
+}
+
+.svcA-hero .btn {
+    display: inline-block;
+    margin: 6px 8px 0 0;
+    padding: 10px 18px;
+    border-radius: 999px;
+    border: 1px solid #66b1ff;
+    color: #66b1ff;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.svcA-hero .btn.solid {
+    background: #66b1ff;
+    color: #0b1a2a;
+    border-color: #66b1ff;
+}
+
+.svcA-tiles {
+    background: #f7f9fc;
+    padding: 34px 0;
+}
+
+.svcA-tiles .grid {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    gap: 16px;
+    grid-template-columns: repeat(3, 1fr);
+    padding: 0 20px;
+}
+
+.svcA-tiles .tile {
+    background: #fff;
+    border: 1px solid #e9eef5;
+    border-radius: 12px;
+    padding: 18px;
+    box-shadow: 0 10px 24px rgba(15,23,42,.05);
+}
+
+.svcA-tiles .ic {
+    font-size: 26px;
+}
+
+.svcA-tiles h3 {
+    margin: 8px 0 6px;
+}
+
+.svcA-tiles p {
+    color: #475569;
+    margin: 0 0 8px;
+}
+
+.svcA-tiles .lnk {
+    color: var(--brand);
+    text-decoration: none;
+    font-weight: 600;
+}
+
+/* ------------------------------
+   CONTACT SECTION
+------------------------------ */
+.container {
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 0 20px;
+}
+
+.aew-cta-wrap {
     display: flex;
-    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px;
     justify-content: center;
-    background: rgba(255, 255, 255, 0.2);
-    border-radius: 50%;
-    transition: all 0.3s ease;
+    margin-top: 10px;
 }
 
-.contact-card:hover .icon-circle {
-    background: white;
-    transform: scale(1.1) rotate(360deg);
+.aew-cta {
+    display: inline-block;
+    padding: 12px 18px;
+    border-radius: 10px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: 0.2s;
 }
 
-.contact-card:hover .icon-circle i {
-    color: var(--primary-color);
+.aew-call {
+    background: #0a66c2;
+    color: #fff;
 }
 
-/* Modal con animaciones suaves */
-.modal-content {
-    border-radius: 15px;
-    border: none;
-    box-shadow: 0 10px 50px rgba(0, 0, 0, 0.3);
+.aew-mail {
+    background: #1f2937;
+    color: #fff;
 }
 
-.modal-header {
-    border-bottom: 2px solid #e9ecef;
-    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+.aew-wa {
+    background: linear-gradient(90deg,#23d061,#25d366);
+    color: #fff;
 }
 
-/* Scroll suave */
-html {
-    scroll-behavior: smooth;
+.aew-cta:hover {
+    opacity: 0.9;
 }
 
-/* Animación de entrada para secciones */
-section {
-    opacity: 0;
-    animation: fadeIn 0.8s ease forwards;
+.map-container {
+    height: 400px;
 }
 
-@keyframes fadeIn {
-    to {
-        opacity: 1;
+/* ------------------------------
+   FOOTER
+------------------------------ */
+.aew-footer {
+    background: #0a0f1a;
+    color: #dce3ef;
+    text-align: center;
+    padding: 20px 0;
+    font-size: 14px;
+}
+
+.aew-footer a {
+    color: #66b1ff;
+    margin: 0 6px;
+    text-decoration: none;
+}
+
+.aew-footer a:hover {
+    text-decoration: underline;
+}
+
+/* ------------------------------
+   RESPONSIVE
+------------------------------ */
+@media (max-width: 900px) {
+    .aew-hero .grid {
+        grid-template-columns: 1fr;
+        padding: 46px 0;
+    }
+    .aew-title {
+        font-size: 34px;
+    }
+    .aew-nav {
+        display: none;
+    }
+    .svcA-hero .wrap {
+        grid-template-columns: 1fr;
+    }
+    .svcA-tiles .grid {
+        grid-template-columns: repeat(2,1fr);
     }
 }
 
-/* Responsive */
-@media (max-width: 768px) {
-    .hero-section h1 {
-        font-size: 2rem;
-    }
-    
-    .equipment-card:hover {
-        transform: translateY(-10px);
+@media (max-width: 560px) {
+    .svcA-tiles .grid {
+        grid-template-columns: 1fr;
     }
 }
