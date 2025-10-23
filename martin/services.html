@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Services | AEW-Tech</title>
+<link rel="icon" href="images/logoaewcortado.jpeg" type="image/png">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<style>
+body { font-family: 'Inter', sans-serif; background: #f8f9fa; color: #0b1220; }
+
+/* Hero */
+.svc-hero { background: #0b1a2a; color: #fff; text-align: center; padding: 60px 20px; border-radius: 12px; }
+.svc-hero h1 { font-size: 2.5rem; margin-bottom: 15px; font-weight: 700; }
+.svc-hero p { font-size: 1.1rem; opacity: 0.9; }
+
+/* Service Cards */
+.svc-cards .card { border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,.08); transition: transform .2s; }
+.svc-cards .card:hover { transform: translateY(-5px); }
+.svc-cards .card h5 { font-weight: 700; }
+.svc-cards .card p { color: #475569; }
+.svc-cards .btn { border-radius: 50px; font-weight: 600; }
+
+/* Navbar overrides */
+.navbar-brand img { height: 40px; }
+</style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm sticky-top">
+  <div class="container">
+    <a class="navbar-brand d-flex align-items-center" href="index.html">
+      <img src="images/logomartin.jpeg" alt="AEW-Tech logo">
+      <span class="ms-2 fw-bold">AEW-Tech</span>
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+        <li class="nav-item"><a class="nav-link active" href="services.html">Services</a></li>
+        <li class="nav-item"><a class="nav-link" href="contacts.html">Contact</a></li>
+        <li class="nav-item"><a class="nav-link" href="global.html">Global Support</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="svc-hero mb-5">
+  <div class="container">
+    <h1>Comprehensive MRI & CT Services</h1>
+    <p>From gradient & RF amplifiers to coils, injectors, helium compressors, and system boards—bench/load tested, documented, and warrantied.</p>
+    <a href="#services" class="btn btn-primary mt-3">View Services</a>
+  </div>
+</section>
+
+<!-- SERVICES CARDS -->
+<section class="container svc-cards mb-5" id="services">
+  <div class="row g-4">
+    <div class="col-md-6 col-lg-4">
+      <div class="card p-4 h-100 text-center">
+        <div class="mb-3" style="font-size:2rem;">⚡</div>
+        <h5>Gradient & RF Amps</h5>
+        <p>Precision repairs/exchanges, thermal & protection checks.</p>
+        <a href="#svc-amps" class="btn btn-outline-primary">Learn More</a>
+      </div>
+    </div>
+    <div class="col-md-6 col-lg-4">
+      <div class="card p-4 h-100 text-center">
+        <div class="mb-3" style="font-size:2rem;">❄️</div>
+        <h5>Helium Compressors</h5>
+        <p>Performance-verified, flow/pressure tested.</p>
+        <a href="#svc-helium" class="btn btn-outline-primary">Learn More</a>
+      </div>
+    </div>
+    <div class="col-md-6 col-lg-4">
+      <div class="card p-4 h-100 text-center">
+        <div class="mb-3" style="font-size:2rem;">🌀</div>
+        <h5>Coils & Injectors</h5>
+        <p>Calibration & patient-safety validation to OEM specs.</p>
+        <a href="#svc-coils" class="btn btn-outline-primary">Learn More</a>
+      </div>
+    </div>
+    <div class="col-md-6 col-lg-4">
+      <div class="card p-4 h-100 text-center">
+        <div class="mb-3" style="font-size:2rem;">🔌</div>
+        <h5>Boards & Power</h5>
+        <p>Component-level repair and burn-in with QA reports.</p>
+        <a href="#svc-boards" class="btn btn-outline-primary">Learn More</a>
+      </div>
+    </div>
+    <div class="col-md-6 col-lg-4">
+      <div class="card p-4 h-100 text-center">
+        <div class="mb-3" style="font-size:2rem;">🚚</div>
+        <h5>Global Shipping</h5>
+        <p>Insured international logistics & customs docs.</p>
+      </div>
+    </div>
+    <div class="col-md-6 col-lg-4">
+      <div class="card p-4 h-100 text-center">
+        <div class="mb-3" style="font-size:2rem;">📄</div>
+        <h5>Documentation</h5>
+        <p>QA certificates and test data with each unit.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="bg-dark text-light text-center py-3">
+  <p class="mb-1">©️ 2025 AEW-Tech</p>
+  <div>
+    <a href="#" class="text-decoration-none text-info me-2">Privacy Policy</a>
+    <a href="#" class="text-decoration-none text-info">Terms of Service</a>
+  </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/bootstrap.bundle.min.js"></script>
+</body>
+</html>
