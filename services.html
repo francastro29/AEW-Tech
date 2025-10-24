@@ -16,11 +16,35 @@ body { font-family: 'Inter', sans-serif; background: #f8f9fa; color: #0b1220; }
 .svc-hero p { font-size: 1.1rem; opacity: 0.9; }
 
 /* Service Cards */
-.svc-cards .card { border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,.08); transition: transform .2s; }
+.svc-cards .card { 
+  border-radius: 12px; 
+  box-shadow: 0 4px 20px rgba(0,0,0,.08); 
+  transition: all .3s ease; 
+  overflow: hidden;
+}
 .svc-cards .card:hover { transform: translateY(-5px); }
 .svc-cards .card h5 { font-weight: 700; }
 .svc-cards .card p { color: #475569; }
 .svc-cards .btn { border-radius: 50px; font-weight: 600; }
+
+/* Hidden Description */
+.extra-content {
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  transition: all 0.4s ease;
+}
+
+.card.expanded .extra-content {
+  max-height: 200px;
+  opacity: 1;
+  margin-top: 10px;
+}
+
+.card.expanded {
+  background-color: #eef5ff;
+  transform: scale(1.02);
+}
 
 /* Navbar overrides */
 .navbar-brand img { height: 40px; }
@@ -61,38 +85,59 @@ body { font-family: 'Inter', sans-serif; background: #f8f9fa; color: #0b1220; }
 <!-- SERVICES CARDS -->
 <section class="container svc-cards mb-5" id="services">
   <div class="row g-4">
+    <!-- Card 1 -->
     <div class="col-md-6 col-lg-4">
       <div class="card p-4 h-100 text-center">
         <div class="mb-3" style="font-size:2rem;">⚡</div>
         <h5>Gradient & RF Amps</h5>
         <p>Precision repairs/exchanges, thermal & protection checks.</p>
-        <a href="#svc-amps" class="btn btn-outline-primary">Learn More</a>
+        <button class="btn btn-outline-primary learn-btn">Learn More</button>
+        <div class="extra-content">
+          <p>We ensure high reliability with detailed component-level inspection, replacing only genuine OEM parts for consistent MRI performance.</p>
+        </div>
       </div>
     </div>
+
+    <!-- Card 2 -->
     <div class="col-md-6 col-lg-4">
       <div class="card p-4 h-100 text-center">
         <div class="mb-3" style="font-size:2rem;">❄️</div>
         <h5>Helium Compressors</h5>
         <p>Performance-verified, flow/pressure tested.</p>
-        <a href="#svc-helium" class="btn btn-outline-primary">Learn More</a>
+        <button class="btn btn-outline-primary learn-btn">Learn More</button>
+        <div class="extra-content">
+          <p>Each compressor undergoes endurance and efficiency tests to guarantee reliable cooling and minimal downtime for your imaging systems.</p>
+        </div>
       </div>
     </div>
+
+    <!-- Card 3 -->
     <div class="col-md-6 col-lg-4">
       <div class="card p-4 h-100 text-center">
         <div class="mb-3" style="font-size:2rem;">🌀</div>
         <h5>Coils & Injectors</h5>
         <p>Calibration & patient-safety validation to OEM specs.</p>
-        <a href="#svc-coils" class="btn btn-outline-primary">Learn More</a>
+        <button class="btn btn-outline-primary learn-btn">Learn More</button>
+        <div class="extra-content">
+          <p>Our coil testing ensures consistent image quality, while injectors are calibrated for precise contrast delivery and patient safety.</p>
+        </div>
       </div>
     </div>
+
+    <!-- Card 4 -->
     <div class="col-md-6 col-lg-4">
       <div class="card p-4 h-100 text-center">
         <div class="mb-3" style="font-size:2rem;">🔌</div>
         <h5>Boards & Power</h5>
         <p>Component-level repair and burn-in with QA reports.</p>
-        <a href="#svc-boards" class="btn btn-outline-primary">Learn More</a>
+        <button class="btn btn-outline-primary learn-btn">Learn More</button>
+        <div class="extra-content">
+          <p>All boards are subjected to multi-hour burn-in tests to ensure stability under real load conditions before final certification.</p>
+        </div>
       </div>
     </div>
+
+    <!-- Card 5 -->
     <div class="col-md-6 col-lg-4">
       <div class="card p-4 h-100 text-center">
         <div class="mb-3" style="font-size:2rem;">🚚</div>
@@ -100,6 +145,8 @@ body { font-family: 'Inter', sans-serif; background: #f8f9fa; color: #0b1220; }
         <p>Insured international logistics & customs docs.</p>
       </div>
     </div>
+
+    <!-- Card 6 -->
     <div class="col-md-6 col-lg-4">
       <div class="card p-4 h-100 text-center">
         <div class="mb-3" style="font-size:2rem;">📄</div>
@@ -120,5 +167,16 @@ body { font-family: 'Inter', sans-serif; background: #f8f9fa; color: #0b1220; }
 </footer>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/bootstrap.bundle.min.js"></script>
+
+<script>
+// Toggle expanded description
+document.querySelectorAll('.learn-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const card = btn.closest('.card');
+    card.classList.toggle('expanded');
+    btn.textContent = card.classList.contains('expanded') ? "Show Less" : "Learn More";
+  });
+});
+</script>
 </body>
 </html>
