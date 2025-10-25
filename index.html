@@ -5,10 +5,42 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>AEW-Tech | Home</title>
 <link rel="icon" href="images/logoaewcortado.jpeg" type="image/png">
+
+<!-- Bootstrap CSS -->
 <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
-<link rel="stylesheet" href="style.css">
+
+<!-- AOS Animation Library -->
+<link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
+
 <style>
 body { font-family: 'Inter', sans-serif; background: #f8f9fa; color: #0b1220; }
+
+/* Navbar fixes */
+.navbar { transition: box-shadow 0.3s ease; }
+.navbar-brand img { height: 40px; }
+
+/* Asegura que el toggle sea visible */
+.navbar-toggler { 
+  border: 1px solid #dee2e6 !important;
+  padding: 0.25rem 0.5rem;
+}
+.navbar-toggler:focus { 
+  box-shadow: 0 0 0 0.25rem rgba(62, 143, 255, 0.25) !important;
+}
+
+/* Menu dropdown en móvil */
+.navbar-collapse { 
+  transition: all 0.3s ease;
+}
+
+.nav-link { 
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+.nav-link:hover,
+.nav-link.active { 
+  color: #3d8fff !important;
+}
 
 /* Hero */
 .hero-section {
@@ -17,96 +49,107 @@ body { font-family: 'Inter', sans-serif; background: #f8f9fa; color: #0b1220; }
   padding: 80px 20px;
   border-radius: 12px;
   text-align: center;
-  color: #ffffff; /* letras blancas para que resalten sobre la imagen */
+  color: #ffffff;
   overflow: hidden;
 }
-
-/* Overlay oscuro */
 .hero-section::before {
   content: "";
   position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.5); /* 50% de negro */
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: rgba(0,0,0,0.5);
   z-index: 0;
 }
-
-/* Texto y botones por encima del overlay */
 .hero-section h1,
 .hero-section p,
 .hero-section .btn {
   position: relative;
   z-index: 1;
 }
-
 .hero-section h1 { font-size: 2.8rem; font-weight: 800; margin-bottom: 20px; }
 .hero-section p { font-size: 1.2rem; margin-bottom: 30px; }
 .hero-section .btn { border-radius: 50px; font-weight: 600; }
 
 /* Quick Pills */
 .pill { 
-    background: linear-gradient(135deg, #3d8fff, #1e5bff) !important;
-    color: #fff !important;
-    font-weight: 700 !important;
-    padding: 6px 14px;
-    border-radius: 50px;
-    font-size: 0.9rem;
-    box-shadow: 0 6px 20px rgba(62, 143, 255, 0.35);
-    border: 1px solid rgba(255, 255, 255, 0.3);
-    transition: all 0.3s ease !important;
-    cursor: pointer;
+  background: linear-gradient(135deg, #3d8fff, #1e5bff);
+  color: #fff;
+  font-weight: 700;
+  padding: 6px 14px;
+  border-radius: 50px;
+  font-size: 0.9rem;
+  box-shadow: 0 6px 20px rgba(62,143,255,0.35);
+  border: 1px solid rgba(255,255,255,0.3);
+  transition: all 0.3s ease;
+  cursor: pointer;
+  display: inline-block;
+  margin: 5px;
+}
+.pill:hover {
+  background: linear-gradient(135deg, #4d98ff, #2e6eff);
+  transform: translateY(-3px) scale(1.05);
+  box-shadow: 0 10px 30px rgba(62,143,255,0.5);
+  border: 1px solid rgba(255,255,255,0.5);
 }
 
-.pill:hover {
-    background: linear-gradient(135deg, #4d98ff, #2e6eff) !important;
-    transform: translateY(-3px) scale(1.05);
-    box-shadow: 0 10px 30px rgba(62, 143, 255, 0.5);
-    border: 1px solid rgba(255, 255, 255, 0.5);
-}
-.pill { background: #f5f7fb; padding: 6px 14px; border-radius: 50px; font-size: 0.9rem; }
+.pills-container { margin-top: 20px; }
 
 /* Capabilities Cards */
-.capabilities .card { border-radius: 12px; padding: 25px; box-shadow: 0 4px 20px rgba(0,0,0,.08); transition: transform .2s; }
+.capabilities .card { 
+  border-radius: 12px; 
+  padding: 25px;
+  box-shadow: 0 4px 20px rgba(0,0,0,.08);
+  transition: transform .2s;
+  border: none;
+}
 .capabilities .card:hover { transform: translateY(-5px); }
 .capabilities .card h5 { font-weight: 700; margin-bottom: 10px; }
 .capabilities .card p { color: #475569; }
 .capabilities .card .icon { font-size: 2rem; margin-bottom: 10px; }
 
-/* Navbar overrides */
-.navbar-brand img { height: 40px; }
+/* CTA */
+.cta-section { margin-top: 40px; }
 </style>
 </head>
 <body>
 
-<!-- NAVBAR -->
-<nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm sticky-top">
-  <div class="container">
+<!-- NAVBAR FUNCIONAL -->
+<nav class="navbar navbar-expand-lg navbar-light bg-white sticky-top shadow-sm">
+  <div class="container-fluid px-3 px-lg-5">
     <a class="navbar-brand d-flex align-items-center" href="index.html">
-      <img src="images/logomartin.jpeg" alt="AEW-Tech logo">
+      <img src="images/logomartin.jpeg" alt="AEW-Tech logo" height="40">
       <span class="ms-2 fw-bold">AEW-Tech</span>
     </a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+      aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
-    <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
-      <ul class="navbar-nav">
-        <li class="nav-item"><a class="nav-link active" href="index.html">Home</a></li>
-        <li class="nav-item"><a class="nav-link" href="services.html">Services</a></li>
-        <li class="nav-item"><a class="nav-link" href="contacts.html">Contact</a></li>
-        <li class="nav-item"><a class="nav-link" href="global.html">Global Support</a></li>
+
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ms-auto gap-2">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="index.html">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="services.html">Services</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="contacts.html">Contact</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="global.html">Global Support</a>
+        </li>
       </ul>
     </div>
   </div>
 </nav>
 
 <!-- HERO -->
-<section class="hero-section mb-5">
+<section class="hero-section mb-5" data-aos="fade-up">
   <div class="container">
     <h1>Board-Level Repairs & Parts for Imaging Systems</h1>
     <p>Gradient & RF power amplifiers, coils, system boards, injectors, helium compressors, and more—bench-tested for reliability and backed by responsive support.</p>
-
     <div class="pills-container">
       <span class="pill">Gradient & RF Amps</span>
       <span class="pill">Coils & Injectors</span>
@@ -118,7 +161,7 @@ body { font-family: 'Inter', sans-serif; background: #f8f9fa; color: #0b1220; }
 </section>
 
 <!-- CAPABILITIES -->
-<section class="container capabilities mb-5">
+<section class="container capabilities mb-5" data-aos="fade-up">
   <div class="text-center mb-5">
     <h2 class="fw-bold">Our Capabilities</h2>
     <p>Comprehensive Support for MRI & CT Systems</p>
@@ -162,15 +205,15 @@ body { font-family: 'Inter', sans-serif; background: #f8f9fa; color: #0b1220; }
   </div>
 </section>
 
-<!-- CALL TO ACTION (antes del footer) -->
-<section class="cta-section text-center text-light py-5" style="background: linear-gradient(135deg, #1e5bff, #3d8fff);">
+<!-- CALL TO ACTION -->
+<section class="cta-section text-center text-light py-5" style="background: linear-gradient(135deg, #1e5bff, #3d8fff);" data-aos="fade-up">
   <div class="container">
     <h3 class="fw-bold mb-3">Need Immediate Assistance?</h3>
-    <p class="mb-4">Contact our support team — we’re ready to help you with repairs, replacements, and system diagnostics.</p>
+    <p class="mb-4">Contact our support team — we're ready to help you with repairs, replacements, and system diagnostics.</p>
     <div class="d-flex flex-wrap justify-content-center gap-3">
       <a href="contacts.html" class="btn btn-light fw-semibold px-4">Request Service</a>
       <a href="tel:+13055104769" class="btn btn-outline-light fw-semibold px-4">📞 Call (305) 510-4769</a>
-      <a href="https://wa.me/13053001328" target="_blank" rel="noopener" class="btn btn-success fw-semibold px-4">💬 WhatsApp</a>
+      <a href="https://wa.me/13053001328" target="_blank" class="btn btn-success fw-semibold px-4">💬 WhatsApp</a>
     </div>
   </div>
 </section>
@@ -184,6 +227,35 @@ body { font-family: 'Inter', sans-serif; background: #f8f9fa; color: #0b1220; }
   </div>
 </footer>
 
+<!-- Scripts -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+
+<script>
+  // Inicializar AOS
+  AOS.init({ duration: 1000, once: true, offset: 100 });
+
+  // Cerrar el menú cuando se hace clic en un enlace (móvil)
+  const navbarCollapse = document.querySelector('.navbar-collapse');
+  const navLinks = document.querySelectorAll('.nav-link');
+  
+  navLinks.forEach(link => {
+    link.addEventListener('click', () => {
+      const bsCollapse = new bootstrap.Collapse(navbarCollapse, { toggle: false });
+      bsCollapse.hide();
+    });
+  });
+
+  // Navbar sombra al hacer scroll
+  window.addEventListener('scroll', function () {
+    const navbar = document.querySelector('.navbar');
+    if (window.scrollY > 50) {
+      navbar.classList.add('shadow');
+    } else {
+      navbar.classList.remove('shadow');
+    }
+  });
+</script>
+
 </body>
 </html>

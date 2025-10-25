@@ -5,46 +5,46 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Services | AEW-Tech</title>
 <link rel="icon" href="images/logoaewcortado.jpeg" type="image/png">
-<link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+
+<!-- Bootstrap CSS -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet" />
+
+<!-- AOS CSS -->
+<link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
+
+<!-- Custom CSS -->
 <link rel="stylesheet" href="style.css">
+
 <style>
 body { font-family: 'Inter', sans-serif; background: #f8f9fa; color: #0b1220; }
 
 /* Hero */
-.svc-hero { background: #0b1a2a; color: #fff; text-align: center; padding: 60px 20px; border-radius: 12px; }
+.svc-hero {
+  background: #0b1a2a;
+  color: #fff;
+  text-align: center;
+  padding: 60px 20px;
+  border-radius: 12px;
+}
 .svc-hero h1 { font-size: 2.5rem; margin-bottom: 15px; font-weight: 700; }
 .svc-hero p { font-size: 1.1rem; opacity: 0.9; }
 
 /* Service Cards */
-.svc-cards .card { 
-  border-radius: 12px; 
-  box-shadow: 0 4px 20px rgba(0,0,0,.08); 
-  transition: all .3s ease; 
+.svc-cards .card {
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0,0,0,.08);
+  transition: all .3s ease;
   overflow: hidden;
 }
-.svc-cards .card:hover { transform: translateY(-5px); }
+.svc-cards .card:hover { transform: translateY(-5px); box-shadow:0 10px 20px rgba(0,0,0,0.15);}
 .svc-cards .card h5 { font-weight: 700; }
 .svc-cards .card p { color: #475569; }
 .svc-cards .btn { border-radius: 50px; font-weight: 600; }
 
 /* Hidden Description */
-.extra-content {
-  max-height: 0;
-  overflow: hidden;
-  opacity: 0;
-  transition: all 0.4s ease;
-}
-
-.card.expanded .extra-content {
-  max-height: 200px;
-  opacity: 1;
-  margin-top: 10px;
-}
-
-.card.expanded {
-  background-color: #eef5ff;
-  transform: scale(1.02);
-}
+.extra-content { max-height: 0; overflow: hidden; opacity: 0; transition: all 0.4s ease; }
+.card.expanded .extra-content { max-height: 200px; opacity: 1; margin-top: 10px; }
+.card.expanded { background-color: #eef5ff; transform: scale(1.02); }
 
 /* Navbar overrides */
 .navbar-brand img { height: 40px; }
@@ -74,7 +74,7 @@ body { font-family: 'Inter', sans-serif; background: #f8f9fa; color: #0b1220; }
 </nav>
 
 <!-- HERO -->
-<section class="svc-hero mb-5">
+<section class="svc-hero mb-5" data-aos="fade-up">
   <div class="container">
     <h1>Comprehensive MRI & CT Services</h1>
     <p>From gradient & RF amplifiers to coils, injectors, helium compressors, and system boards—bench/load tested, documented, and warrantied.</p>
@@ -86,7 +86,7 @@ body { font-family: 'Inter', sans-serif; background: #f8f9fa; color: #0b1220; }
 <section class="container svc-cards mb-5" id="services">
   <div class="row g-4">
     <!-- Card 1 -->
-    <div class="col-md-6 col-lg-4">
+    <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="100">
       <div class="card p-4 h-100 text-center">
         <div class="mb-3" style="font-size:2rem;">⚡</div>
         <h5>Gradient & RF Amps</h5>
@@ -97,9 +97,8 @@ body { font-family: 'Inter', sans-serif; background: #f8f9fa; color: #0b1220; }
         </div>
       </div>
     </div>
-
     <!-- Card 2 -->
-    <div class="col-md-6 col-lg-4">
+    <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="200">
       <div class="card p-4 h-100 text-center">
         <div class="mb-3" style="font-size:2rem;">❄️</div>
         <h5>Helium Compressors</h5>
@@ -110,9 +109,8 @@ body { font-family: 'Inter', sans-serif; background: #f8f9fa; color: #0b1220; }
         </div>
       </div>
     </div>
-
     <!-- Card 3 -->
-    <div class="col-md-6 col-lg-4">
+    <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="300">
       <div class="card p-4 h-100 text-center">
         <div class="mb-3" style="font-size:2rem;">🌀</div>
         <h5>Coils & Injectors</h5>
@@ -123,9 +121,8 @@ body { font-family: 'Inter', sans-serif; background: #f8f9fa; color: #0b1220; }
         </div>
       </div>
     </div>
-
     <!-- Card 4 -->
-    <div class="col-md-6 col-lg-4">
+    <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="400">
       <div class="card p-4 h-100 text-center">
         <div class="mb-3" style="font-size:2rem;">🔌</div>
         <h5>Boards & Power</h5>
@@ -136,18 +133,16 @@ body { font-family: 'Inter', sans-serif; background: #f8f9fa; color: #0b1220; }
         </div>
       </div>
     </div>
-
     <!-- Card 5 -->
-    <div class="col-md-6 col-lg-4">
+    <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="500">
       <div class="card p-4 h-100 text-center">
         <div class="mb-3" style="font-size:2rem;">🚚</div>
         <h5>Global Shipping</h5>
         <p>Insured international logistics & customs docs.</p>
       </div>
     </div>
-
     <!-- Card 6 -->
-    <div class="col-md-6 col-lg-4">
+    <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="600">
       <div class="card p-4 h-100 text-center">
         <div class="mb-3" style="font-size:2rem;">📄</div>
         <h5>Documentation</h5>
@@ -166,17 +161,12 @@ body { font-family: 'Inter', sans-serif; background: #f8f9fa; color: #0b1220; }
   </div>
 </footer>
 
+<!-- Bootstrap JS -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/bootstrap.bundle.min.js"></script>
+<!-- AOS JS -->
+<script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+<!-- Custom JS -->
+<script src="script.js"></script>
 
-<script>
-// Toggle expanded description
-document.querySelectorAll('.learn-btn').forEach(btn => {
-  btn.addEventListener('click', () => {
-    const card = btn.closest('.card');
-    card.classList.toggle('expanded');
-    btn.textContent = card.classList.contains('expanded') ? "Show Less" : "Learn More";
-  });
-});
-</script>
 </body>
 </html>
