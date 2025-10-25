@@ -109,6 +109,42 @@ body { font-family: 'Inter', sans-serif; background: #f8f9fa; color: #0b1220; }
 
 /* CTA */
 .cta-section { margin-top: 40px; }
+@media (max-width: 992px) {
+  .menu-btn {
+    display: block !important;
+  }
+
+  #navMenu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background-color: #fff;
+    flex-direction: column !important;
+    gap: 0 !important;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease-in-out;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    z-index: 999;
+    padding: 0;
+    margin: 0;
+  }
+
+  #navMenu.active {
+    max-height: 500px;
+  }
+
+  #navMenu li {
+    padding: 1rem 1.5rem;
+    border-bottom: 1px solid #e6ecf4;
+  }
+
+  #navMenu .nav-link {
+    display: block;
+    padding: 0;
+  }
+}
 </style>
 </head>
 <body>
@@ -121,27 +157,24 @@ body { font-family: 'Inter', sans-serif; background: #f8f9fa; color: #0b1220; }
       <span class="ms-2 fw-bold">AEW-Tech</span>
     </a>
 
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-      aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
+<button class="menu-btn" id="menuBtn" aria-label="Toggle navigation" style="border: 1px solid #dee2e6; background: none; cursor: pointer; padding: 0.5rem 0.75rem; border-radius: 4px; font-size: 1.5rem;">
+  ☰
+</button>
 
-    <div class="collapse navbar-collapse" id="navbarNav">
-      <ul class="navbar-nav ms-auto gap-2">
-        <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="index.html">Home</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="services.html">Services</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="contacts.html">Contact</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="global.html">Global Support</a>
-        </li>
-      </ul>
-    </div>
+<ul class="nav-menu" id="navMenu" style="display: flex; list-style: none; gap: 2rem; flex-direction: row;">
+      <li class="nav-item">
+        <a class="nav-link active" aria-current="page" href="index.html">Home</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="services.html">Services</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="contacts.html">Contact</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="global.html">Global Support</a>
+      </li>
+    </ul>
   </div>
 </nav>
 
@@ -232,28 +265,40 @@ body { font-family: 'Inter', sans-serif; background: #f8f9fa; color: #0b1220; }
 <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
 
 <script>
-  // Inicializar AOS
-  AOS.init({ duration: 1000, once: true, offset: 100 });
+  document.addEventListener('DOMContentLoaded', () => {
+    
+    // Menu toggle
+    const menuBtn = document.getElementById('menuBtn');
+    const navMenu = document.getElementById('navMenu');
+    const navLinks = document.querySelectorAll('.nav-link');
 
-  // Cerrar el menú cuando se hace clic en un enlace (móvil)
-  const navbarCollapse = document.querySelector('.navbar-collapse');
-  const navLinks = document.querySelectorAll('.nav-link');
-  
-  navLinks.forEach(link => {
-    link.addEventListener('click', () => {
-      const bsCollapse = new bootstrap.Collapse(navbarCollapse, { toggle: false });
-      bsCollapse.hide();
+    // Toggle menú
+    menuBtn.addEventListener('click', function() {
+      navMenu.classList.toggle('active');
     });
-  });
 
-  // Navbar sombra al hacer scroll
-  window.addEventListener('scroll', function () {
-    const navbar = document.querySelector('.navbar');
-    if (window.scrollY > 50) {
-      navbar.classList.add('shadow');
-    } else {
-      navbar.classList.remove('shadow');
+    // Cerrar menú al hacer clic
+    navLinks.forEach(link => {
+      link.addEventListener('click', function() {
+        navMenu.classList.remove('active');
+      });
+    });
+
+    // Inicializar AOS
+    if (typeof AOS !== 'undefined') {
+      AOS.init({ duration: 1000, once: true, offset: 100 });
     }
+
+    // Navbar sombra al scroll
+    window.addEventListener('scroll', function () {
+      const navbar = document.querySelector('.navbar');
+      if (window.scrollY > 50) {
+        navbar.classList.add('shadow');
+      } else {
+        navbar.classList.remove('shadow');
+      }
+    });
+
   });
 </script>
 

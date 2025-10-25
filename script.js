@@ -39,5 +39,4 @@ document.addEventListener('DOMContentLoaded', () => {
       btn.textContent = card.classList.contains('expanded') ? "Show Less" : "Learn More";
     });
   });
-
-});
+})

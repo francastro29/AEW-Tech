@@ -559,3 +559,37 @@ a:hover {
         font-size: 24px;
     }
 }
+/* Menu responsive */
+@media (max-width: 768px) {
+  .menu-btn {
+    display: block !important;
+  }
+
+  #navMenu {
+    position: absolute;
+    top: 70px;
+    left: 0;
+    right: 0;
+    background-color: #fff;
+    flex-direction: column !important;
+    gap: 0 !important;
+    max-height: 0 !important;
+    overflow: hidden;
+    transition: max-height 0.3s ease-in-out;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    z-index: 999;
+  }
+
+  #navMenu.active {
+    max-height: 500px !important;
+  }
+
+  #navMenu li {
+    padding: 1rem 2rem;
+    border-bottom: 1px solid #e6ecf4;
+  }
+
+  #navMenu .nav-link {
+    display: block;
+  }
+}
