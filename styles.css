@@ -593,3 +593,14 @@ a:hover {
     display: block;
   }
 }
+/* === FIX: Ocultar menú hamburguesa en pantallas grandes === */
+.menu-btn {
+  display: none; /* Oculto por defecto (en PC, laptop, etc.) */
+}
+
+/* Mostrar solo en pantallas menores a 992px */
+@media (max-width: 992px) {
+  .menu-btn {
+    display: block !important;
+  }
+}
