@@ -1,190 +1,595 @@
-/* ------------------------------
-   BASE
------------------------------- */
-html, body {
-  margin: 0;
-  padding: 0;
-  font-family: Inter, system-ui, Segoe UI, Roboto, Arial, sans-serif;
-  color: #0b1220;
-}
-a { text-decoration: none; color: inherit; }
-a:hover { color: #0a66b2; }
+/* ================================
+   AEW-Tech · Modern UI Refresh
+   (solo estilos; contenido intacto)
+=================================== */
 
-/* ------------------------------
-   VARIABLES / THEME
------------------------------- */
+/* -------- Tokens / Theme -------- */
 :root {
-  --brand: #0a66b2;
-  --brand2: #0b8dda;
-  --ink: #0b1220;
-  --muted: #5b6474;
-  --soft: #f5f7fb;
-  --line: #e6ecf4;
-  --ok: #15a34a;
-  --cta: #105fb3;
-  --ctaH: #0a4a8a;
-  --radius: 16px;
+  /* Brand */
+  --brand-500:#1e5bff;
+  --brand-600:#164eea;
+  --brand-700:#0f3fc8;
+
+  /* Ink & Surfaces (light) */
+  --ink:#0b1220;
+  --ink-2:#22324d;
+  --muted:#5b6474;
+  --bg:#f7f8fb;
+  --card:#ffffff;
+  --line:#e7ecf4;
+
+  /* Accents */
+  --ok:#23c16b;
+  --warn:#ffb020;
+  --danger:#ef4444;
+
+  /* Effects */
+  --radius-sm:10px;
+  --radius:16px;
+  --radius-xl:22px;
+
+  --shadow-sm:0 4px 12px rgba(15,23,42,.06);
+  --shadow:0 10px 30px rgba(15,23,42,.08);
+  --shadow-lg:0 20px 45px rgba(15,23,42,.12);
+
+  /* Fluid type scale */
+  --step--1: clamp(.9rem, .86rem + .2vw, .98rem);
+  --step-0:  clamp(1rem, .95rem + .4vw, 1.125rem);
+  --step-1:  clamp(1.1rem, 1.03rem + .6vw, 1.25rem);
+  --step-2:  clamp(1.35rem, 1.2rem + 1vw, 1.6rem);
+  --step-3:  clamp(1.9rem, 1.6rem + 2vw, 2.4rem);
+  --step-4:  clamp(2.6rem, 2.1rem + 3vw, 3rem);
+
+  /* Motion */
+  --ease: cubic-bezier(.2,.8,.2,1);
+  --dur-1: 120ms;
+  --dur-2: 220ms;
+  --dur-3: 400ms;
+
+  /* Layout */
+  --container: 1200px;
 }
 
-/* ------------------------------
-   NAV / HEADER
------------------------------- */
-.navbar { position: relative; z-index: 1000; background-color: #fff !important; }
+/* Dark mode automático */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --ink:#e9eef7;
+    --ink-2:#cfd8e6;
+    --muted:#94a3b8;
+    --bg:#0b1220;
+    --card:#11192a;
+    --line:#1c2740;
+    --shadow-sm:0 4px 12px rgba(0,0,0,.35);
+    --shadow:0 10px 30px rgba(0,0,0,.45);
+    --shadow-lg:0 20px 45px rgba(0,0,0,.55);
+  }
+}
+
+/* Reduce motion: respeta accesibilidad */
+@media (prefers-reduced-motion: reduce) {
+  * { animation: none !important; transition: none !important; }
+}
+
+/* -------- Base / Typography -------- */
+html, body {
+  margin:0; padding:0;
+  font-family: Inter, system-ui, Segoe UI, Roboto, Arial, sans-serif;
+  background: var(--bg);
+  color: var(--ink);
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+}
+a { color: inherit; text-decoration: none; }
+a:hover { color: var(--brand-600); }
+
+.container { max-width: var(--container); }
+
+h1 { font-size: var(--step-4); font-weight: 800; letter-spacing: -.02em; }
+h2 { font-size: var(--step-3); font-weight: 800; letter-spacing: -.01em; }
+h3 { font-size: var(--step-2); font-weight: 700; }
+p, .nav-link { font-size: var(--step-0); }
+
+/* -------- Navbar (glass) -------- */
+.navbar {
+  backdrop-filter: saturate(140%) blur(10px);
+  background: color-mix(in oklab, var(--card) 85%, transparent) !important;
+  border-bottom: 1px solid var(--line);
+  transition: box-shadow var(--dur-2) var(--ease), background var(--dur-2) var(--ease);
+}
+.navbar.shadow, .navbar.shadow-sm {
+  box-shadow: var(--shadow-sm) !important;
+}
 .navbar-brand img { height: 40px; }
-.navbar-collapse { transition: all .3s ease; }
-.nav-link {
-  font-weight: 500;
-  color: var(--ink) !important;
-  transition: color .3s ease;
-  padding: .5rem 0 !important;
-  margin: .25rem 0 !important;
-}
-.nav-link:hover, .nav-link.active { color: var(--brand) !important; }
+.navbar-brand span { font-weight: 800; letter-spacing: .2px; }
 
-/* Menú en desktop: fila visible siempre */
+/* Desktop menu */
 .nav-menu {
-  display: flex;
-  list-style: none;
-  gap: 2rem;
-  flex-direction: row;
-  align-items: center;
-  margin: 0;
+  display:flex; list-style:none; gap:2rem;
+  align-items:center; margin:0;
 }
+.nav-link {
+  font-weight:600;
+  color: var(--ink-2) !important;
+  padding: .4rem 0 !important;
+  position: relative;
+  transition: color var(--dur-1) var(--ease);
+}
+.nav-link:hover,
+.nav-link.active {
+  color: var(--brand-600) !important;
+}
+.nav-link::after {
+  content:"";
+  position:absolute; left:0; bottom:-6px;
+  width:0; height:2px; border-radius:2px;
+  background: linear-gradient(90deg, var(--brand-600), var(--brand-500));
+  transition: width var(--dur-2) var(--ease);
+}
+.nav-link:hover::after,
+.nav-link.active::after { width: 100%; }
 
-/* Botón hamburguesa: oculto por defecto (desktop) */
+/* Botón hamburguesa: oculto en desktop */
 .menu-btn {
-  display: none !important;
-  border: 1px solid #dee2e6;
-  background: none;
-  cursor: pointer;
-  padding: .5rem .75rem;
-  border-radius: 4px;
-  font-size: 1.5rem;
+  display:none !important;
+  border:1px solid var(--line);
+  background: color-mix(in oklab, var(--card) 80%, transparent);
+  cursor:pointer;
+  padding:.5rem .75rem; border-radius:10px;
+  font-size:1.4rem; line-height:1; color: var(--ink-2);
+  box-shadow: var(--shadow-sm);
+  transition: transform var(--dur-1) var(--ease), background var(--dur-1) var(--ease);
 }
+.menu-btn:hover { transform: translateY(-1px); }
 
-/* ------------------------------
-   HERO
------------------------------- */
+/* -------- Hero -------- */
 .hero-section {
   position: relative;
-  background: url('images/background.jpg') center/cover no-repeat;
-  padding: 80px 20px;
-  border-radius: 12px;
-  text-align: center;
-  color: #ffffff;
+  background: 
+    linear-gradient(180deg, rgba(10,17,35,.35) 0%, rgba(10,17,35,.6) 100%),
+    url('images/background.jpg') center/cover no-repeat;
+  color:#fff;
+  padding: clamp(56px, 8vw, 96px) 20px;
+  border-radius: var(--radius-xl);
   overflow: hidden;
+  box-shadow: var(--shadow);
 }
 .hero-section::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: rgba(0,0,0,.5);
-  z-index: 0;
+  content:"";
+  position:absolute; inset:-1px;
+  background:
+    radial-gradient(800px 300px at 80% -10%, rgba(62,143,255,.25), transparent 60%),
+    radial-gradient(600px 300px at 10% 120%, rgba(30,91,255,.25), transparent 70%);
+  pointer-events:none;
 }
-.hero-section h1,
-.hero-section p,
-.hero-section .btn { position: relative; z-index: 1; }
-.hero-section h1 { font-size: 2.8rem; font-weight: 800; margin-bottom: 20px; }
-.hero-section p { font-size: 1.2rem; margin-bottom: 30px; }
 
 /* Pills */
-.pills-container { margin-top: 20px; }
 .pill {
-  background: linear-gradient(135deg, #3d8fff, #1e5bff);
-  color: #fff;
-  font-weight: 700;
-  padding: 6px 14px;
-  border-radius: 50px;
-  font-size: .9rem;
-  box-shadow: 0 6px 20px rgba(62,143,255,.35);
-  border: 1px solid rgba(255,255,255,.3);
-  transition: all .3s ease;
-  display: inline-block;
-  margin: 5px;
+  display:inline-block;
+  padding:.55rem 1rem;
+  border-radius:999px;
+  background: linear-gradient(135deg, var(--brand-600), var(--brand-500));
+  color:#fff; font-weight:700; font-size:.92rem;
+  border:1px solid color-mix(in oklab, #fff 25%, transparent);
+  box-shadow: 0 8px 24px rgba(30,91,255,.35);
+  transition: transform var(--dur-2) var(--ease), box-shadow var(--dur-2) var(--ease);
+  margin:6px;
 }
-.pill:hover {
-  background: linear-gradient(135deg, #4d98ff, #2e6eff);
-  transform: translateY(-3px) scale(1.05);
-  box-shadow: 0 10px 30px rgba(62,143,255,.5);
-  border: 1px solid rgba(255,255,255,.5);
+.pill:hover { transform: translateY(-3px) scale(1.03); box-shadow: 0 16px 36px rgba(30,91,255,.45); }
+
+/* -------- Cards / Sections -------- */
+.capabilities .card,
+.region-card,
+.contact-card,
+.map-card {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-sm);
+  transition: transform var(--dur-2) var(--ease), box-shadow var(--dur-2) var(--ease), border-color var(--dur-2) var(--ease);
+}
+.capabilities .card:hover,
+.region-card:hover,
+.contact-card:hover,
+.map-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow);
+  border-color: color-mix(in oklab, var(--brand-600) 25%, var(--line));
+}
+.capabilities .icon,
+.region-card .icon { font-size: 2rem; }
+
+/* CTA band */
+.cta-section {
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow);
 }
 
-/* ------------------------------
-   CAPABILITIES
------------------------------- */
-.capabilities .card {
-  border-radius: 12px;
-  padding: 25px;
-  box-shadow: 0 4px 20px rgba(0,0,0,.08);
-  transition: transform .2s;
-  border: none;
+/* -------- Buttons -------- */
+.btn {
+  border-radius: 999px !important;
+  font-weight:700 !important;
+  padding:.7rem 1.15rem !important;
+  letter-spacing:.1px;
+  transition: transform var(--dur-1) var(--ease), box-shadow var(--dur-1) var(--ease), background var(--dur-1) var(--ease), color var(--dur-1) var(--ease);
 }
-.capabilities .card:hover { transform: translateY(-5px); }
-.capabilities .card h5 { font-weight: 700; margin-bottom: 10px; }
-.capabilities .card p { color: #475569; }
-.capabilities .card .icon { font-size: 2rem; margin-bottom: 10px; }
+.btn:hover { transform: translateY(-2px); box-shadow: var(--shadow-sm); }
+.btn-success { box-shadow: inset 0 0 0 1px rgba(255,255,255,.18); }
 
-/* ------------------------------
-   FOOTER
------------------------------- */
-.aew-footer {
-  background: #0a0f1a;
-  color: #dce3ef;
-  text-align: center;
-  padding: 20px 0;
-  font-size: 14px;
+/* -------- Footer -------- */
+footer.bg-dark {
+  background: linear-gradient(180deg, #0c111c, #0a0f1a);
+  border-top: 1px solid var(--line);
 }
-.aew-footer a { color: #66b1ff; margin: 0 6px; text-decoration: none; transition: color .2s; }
-.aew-footer a:hover { text-decoration: underline; color: #99ccff; }
 
-/* ------------------------------
-   RESPONSIVE & MENU RESPONSIVE (FIX)
------------------------------- */
+/* -------- Accessibility -------- */
+:focus-visible {
+  outline: 3px solid color-mix(in oklab, var(--brand-600), #fff 20%) !important;
+  outline-offset: 2px !important;
+  border-radius: 8px;
+}
 
-/* Mostrar hamburguesa y convertir el menú a colapsable en ≤991px */
+/* -------- Responsive Nav (≤991px) -------- */
 @media (max-width: 991px) {
-  .menu-btn {
-    display: inline-block !important;
-    z-index: 1001;
-  }
+  .menu-btn { display:inline-block !important; z-index: 1001; }
 
-  /* El contenedor del menú pasa a ser 'off-canvas simple' */
   .nav-menu {
-    position: absolute;
-    top: 70px;     /* altura aprox. del header */
-    left: 0;
-    right: 0;
-    background-color: #fff;
-    flex-direction: column !important;
-    gap: 0 !important;
-    max-height: 0;
-    overflow: hidden;
-    transition: max-height .3s ease-in-out;
-    box-shadow: 0 4px 6px rgba(0,0,0,.1);
-    z-index: 1000;
-    padding: 0;
-    margin: 0;
+    position:absolute;
+    top:72px; left:0; right:0;
+    background: var(--card);
+    flex-direction:column !important;
+    gap:0 !important;
+    max-height:0;
+    overflow:hidden;
+    transition: max-height var(--dur-3) var(--ease), box-shadow var(--dur-2) var(--ease);
+    box-shadow: 0 18px 36px rgba(0,0,0,.08);
     border-top: 1px solid var(--line);
+    margin:0; padding:0;
+    z-index:1000;
   }
-
-  .nav-menu.active {
-    max-height: 500px; /* suficiente para mostrar los li */
-  }
+  .nav-menu.active { max-height: 520px; }
 
   .nav-menu li {
-    padding: 1rem 1.5rem;
-    width: 100%;
-    border-bottom: 1px solid #e6ecf4;
+    width:100%;
+    padding: 1rem 1.25rem;
+    border-bottom: 1px solid var(--line);
   }
-
-  .nav-menu .nav-link {
-    display: block;
-    width: 100%;
-  }
+  .nav-menu .nav-link { display:block; width:100%; }
 }
 
-/* Ajustes pequeños adicionales */
+/* -------- Minor responsive polish -------- */
 @media (max-width: 768px) {
-  .hero-section h1 { font-size: 2.2rem; }
-  .hero-section p { font-size: 1rem; }
+  .hero-section h1 { font-size: var(--step-3); }
+  .hero-section p { font-size: var(--step-1); }
+}
+
+/* ---- Page-specific light refactors (sin cambiar contenido) ---- */
+.global-hero, .svc-hero {
+  background: linear-gradient(135deg, var(--brand-700), var(--brand-500));
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow);
+}
+.support-contact {
+  background: color-mix(in oklab, var(--brand-500) 10%, var(--card) 90%);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+}
+
+/* Contact cards */
+.contact-card { border:1px solid var(--line); }
+
+/* Map */
+.map-card iframe { display:block; }
+
+/* Utility */
+.pills-container { margin-top: 18px; display:flex; flex-wrap:wrap; }
+/* =========================================
+   AEW-Tech — Azul oscuro + texto legible
+   (pegar al final de styles.css)
+========================================= */
+
+/* 1) Footer (antes negro) → azul oscuro + links legibles */
+footer.bg-dark {
+  background: linear-gradient(180deg, #0b1a2a, #0a1630) !important; /* azul marino */
+  color: #ffffff !important;
+  border-top: 1px solid #173050 !important;
+}
+footer.bg-dark a {
+  color: #9fc4ff !important;           /* link en azul claro */
+}
+footer.bg-dark a:hover {
+  color: #cfe2ff !important;           /* hover más claro */
+}
+
+/* 2) Secciones “hero” sólidas → gradiente azul */
+.global-hero,
+.svc-hero {
+  background: linear-gradient(135deg, #0a1f4d, #143d8f) !important;
+  color: #ffffff !important;
+}
+.global-hero h1, .global-hero p,
+.svc-hero h1, .svc-hero p {
+  color: #ffffff !important;
+}
+
+/* 3) Navbar en dark mode (cuando el sistema del usuario está en oscuro) 
+      Cambiamos negros por azul oscuro y tipografía clara */
+@media (prefers-color-scheme: dark) {
+  :root {
+    /* Superficies en azul oscuro en vez de negro */
+    --bg:   #0b1a2a;   /* fondo principal */
+    --card: #0e2240;   /* tarjetas/menú desplegado */
+    --line: #173050;   /* líneas/bordes */
+    --ink:  #eaf2ff;   /* texto principal claro */
+    --ink-2:#d5e1ff;   /* texto secundario claro */
+  }
+
+  body {
+    background: var(--bg) !important;
+    color: var(--ink) !important;
+  }
+
+  .navbar {
+    /* glass azul en modo oscuro */
+    backdrop-filter: saturate(140%) blur(10px);
+    background: color-mix(in oklab, var(--card) 85%, transparent) !important;
+    border-bottom: 1px solid var(--line) !important;
+  }
+  .navbar-brand span { color: #ffffff !important; }
+  .nav-link {
+    color: #eaf2ff !important;
+  }
+  .nav-link:hover,
+  .nav-link.active {
+    color: #9fc4ff !important;
+  }
+
+  /* Menú móvil desplegable */
+  .nav-menu {
+    background: var(--card) !important;
+    border-top: 1px solid var(--line) !important;
+  }
+  .nav-menu li { border-bottom: 1px solid var(--line) !important; }
+}
+
+/* 4) Hero principal: asegurar contraste (texto blanco) */
+.hero-section h1,
+.hero-section p {
+  color: #ffffff !important;
+}
+
+/* 5) Botones sobre fondos oscuros: texto siempre blanco */
+.btn-outline-light,
+.btn-success,
+.btn-primary {
+  color: #ffffff !important;
+}
+
+/* 6) Cualquier cosa que use .bg-dark en Bootstrap → azul oscuro */
+.bg-dark {
+  background-color: #0b1a2a !important;
+  color: #ffffff !important;
+}
+
+/* 7) En superficies oscuras, “muted” más claro para legibilidad */
+.text-muted {
+  color: #c7d6f5 !important;
+}
+/* =========================================
+   FIX LEGIBILIDAD EN GLOBAL SUPPORT
+   ========================================= */
+
+/* Fondo general */
+body,
+.global-hero,
+section.container {
+  background-color: #0b1a2a !important; /* azul oscuro consistente */
+  color: #ffffff !important;
+}
+
+/* Tarjetas de regiones (US, EU, etc.) */
+.region-card {
+  background: #12284d !important;  /* azul intermedio */
+  color: #ffffff !important;
+  border: 1px solid #1e3a70 !important;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.3) !important;
+}
+
+.region-card h5,
+.region-card p {
+  color: #ffffff !important;
+  opacity: 1 !important;
+}
+
+.region-card .icon {
+  font-size: 2rem;
+  filter: drop-shadow(0 2px 4px rgba(255,255,255,0.25));
+}
+
+/* Caja de contacto (support-contact) */
+.support-contact {
+  background: #10264a !important;
+  color: #ffffff !important;
+  border: 1px solid #204070 !important;
+}
+
+.support-contact h3,
+.support-contact p {
+  color: #ffffff !important;
+}
+
+/* Botones dentro del bloque de contacto */
+.support-contact .btn {
+  color: #ffffff !important;
+  border: none !important;
+}
+
+.support-contact .btn-primary {
+  background: linear-gradient(135deg, #1e5bff, #0f3fc8) !important;
+}
+
+.support-contact .btn-success {
+  background: linear-gradient(135deg, #1ea060, #14914f) !important;
+}
+
+.support-contact .btn-outline-primary {
+  border: 1px solid #7dafff !important;
+  color: #7dafff !important;
+}
+
+.support-contact .btn-outline-primary:hover {
+  background: #7dafff !important;
+  color: #0b1a2a !important;
+}
+
+/* Footer consistente */
+footer.bg-dark {
+  background: linear-gradient(180deg, #0b1a2a, #0a1630) !important;
+  color: #ffffff !important;
+  border-top: 1px solid #173050 !important;
+}
+/* ===== Legibilidad en "Our Capabilities" ===== */
+
+/* Título y subtítulo del bloque */
+.capabilities .text-center h2,
+.capabilities .text-center p {
+  color: #fff !important;
+}
+
+/* Tarjetas */
+.capabilities .card {
+  background: #12284d !important;         /* opcional: azul intermedio */
+  border: 1px solid #1e3a70 !important;    /* opcional: borde sutil */
+}
+
+.capabilities .card h5,
+.capabilities .card p {
+  color: #fff !important;                  /* texto blanco */
+  opacity: 1 !important;                   /* sin transparencia */
+}
+
+/* (opcional) Icono con un leve realce sobre fondo oscuro */
+.capabilities .card .icon {
+  filter: drop-shadow(0 2px 4px rgba(255,255,255,0.25));
+}
+/* ===== Legibilidad en "Our Capabilities" ===== */
+
+/* Título y subtítulo del bloque */
+.capabilities .text-center h2,
+.capabilities .text-center p {
+  color: #fff !important;
+}
+
+/* Tarjetas */
+.capabilities .card {
+  /* Opcional: si querés un azul más legible de base en las cards */
+  background: #12284d !important;         /* azul oscuro intermedio */
+  border: 1px solid #1e3a70 !important;    /* borde sutil */
+}
+
+/* Texto dentro de las cards */
+.capabilities .card h5,
+.capabilities .card p {
+  color: #fff !important;   /* blanco puro */
+  opacity: 1 !important;    /* sin transparencias */
+}
+
+/* (Opcional) realce mínimo del ícono para que “salte” en fondo oscuro */
+.capabilities .card .icon {
+  filter: drop-shadow(0 2px 4px rgba(255,255,255,0.25));
+}
+/* ===== Modern Blue Theme for Services ===== */
+
+/* Sección completa */
+.svc-cards {
+  background-color: #0b1a2a !important; /* azul oscuro de fondo general */
+  padding: 60px 20px;
+  border-radius: 12px;
+}
+
+/* Tarjetas individuales */
+.svc-cards .card {
+  background: #12284d !important;       /* azul intermedio */
+  color: #ffffff !important;
+  border: 1px solid #1e3a70 !important; /* borde sutil azul */
+  box-shadow: 0 6px 18px rgba(0,0,0,0.25) !important;
+}
+
+/* Texto en blanco */
+.svc-cards .card h5,
+.svc-cards .card p {
+  color: #ffffff !important;
+  opacity: 1 !important;
+}
+
+/* Botón “Learn More” */
+.svc-cards .btn {
+  background: transparent;
+  color: #ffffff !important;
+  border: 2px solid #ffffff !important;
+  transition: all 0.3s ease;
+}
+
+.svc-cards .btn:hover {
+  background: #1e5bff !important;
+  border-color: #1e5bff !important;
+  color: #fff !important;
+  transform: translateY(-2px);
+}
+
+/* Iconos con luz suave */
+.svc-cards .card div[style*="font-size:2rem"] {
+  filter: drop-shadow(0 0 4px rgba(255,255,255,0.25));
+}
+/* ===== Modern Blue Theme for Contact Page ===== */
+
+/* Fondo general */
+body,
+section.container {
+  background-color: #0b1a2a !important; /* Azul oscuro general */
+  color: #ffffff !important;
+}
+
+/* Tarjeta de contacto (lado izquierdo) */
+.contact-card {
+  background: #12284d !important;       /* Azul intermedio */
+  color: #ffffff !important;
+  border: 1px solid #1e3a70 !important; /* Borde azul sutil */
+  box-shadow: 0 6px 18px rgba(0,0,0,0.3) !important;
+}
+
+.contact-card h3,
+.contact-card p,
+.contact-card a {
+  color: #ffffff !important;
+  opacity: 1 !important;
+}
+
+/* Botones */
+.contact-btn {
+  color: #ffffff !important;
+  border: 1px solid #ffffff !important;
+  transition: all 0.3s ease;
+}
+
+.contact-btn:hover {
+  background: #1e5bff !important;
+  color: #ffffff !important;
+  border-color: #1e5bff !important;
+  transform: translateY(-2px);
+}
+
+/* Mapa */
+.map-card {
+  background: #12284d !important;
+  border: 1px solid #1e3a70 !important;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.25) !important;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+/* Footer */
+footer.bg-dark {
+  background: linear-gradient(180deg, #0b1a2a, #0a1630) !important;
+  color: #ffffff !important;
+  border-top: 1px solid #173050 !important;
 }

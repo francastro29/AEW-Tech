@@ -57,22 +57,23 @@
 <body>
 
 <!-- NAVBAR -->
-<nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm sticky-top">
+<nav class="navbar navbar-expand-lg navbar-light bg-white sticky-top shadow-sm">
   <div class="container-fluid px-3 px-lg-5">
     <a class="navbar-brand d-flex align-items-center" href="index.html">
       <img src="images/logomartin.jpeg" alt="AEW-Tech logo" height="40" />
       <span class="ms-2 fw-bold">AEW-Tech</span>
     </a>
 
-    <!-- Botón hamburguesa (se muestra solo ≤991px por CSS global) -->
+    <!-- Botón hamburguesa (controlado por CSS: se oculta en desktop, aparece en móvil) -->
     <button class="menu-btn" id="menuBtn" aria-label="Toggle navigation" aria-expanded="false" aria-controls="navMenu">☰</button>
 
-    <!-- Menú -->
+    <!-- Menú (fila en desktop; colapsable en móvil) -->
     <ul class="nav-menu" id="navMenu">
-      <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
-      <li class="nav-item"><a class="nav-link active" href="services.html">Services</a></li>
+      <li class="nav-item"><a class="nav-link active" aria-current="page" href="index.html">Home</a></li>
+      <li class="nav-item"><a class="nav-link" href="services.html">Services</a></li>
       <li class="nav-item"><a class="nav-link" href="contacts.html">Contact</a></li>
       <li class="nav-item"><a class="nav-link" href="global.html">Global Support</a></li>
+      <li class="nav-item"><a class="nav-link" href="works.html">Works</a></li>
     </ul>
   </div>
 </nav>

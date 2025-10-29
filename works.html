@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>AEW-Tech | Works</title>
+<link rel="icon" href="images/logoaewcortado.jpeg" type="image/png" />
+
+<!-- Bootstrap CSS -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet" />
+
+<!-- AOS Animation Library -->
+<link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet" />
+
+<!-- Inter font -->
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+
+<!-- Custom CSS -->
+<link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar navbar-expand-lg navbar-dark sticky-top">
+  <div class="container-fluid px-3 px-lg-5">
+    <a class="navbar-brand d-flex align-items-center" href="index.html">
+      <img src="images/logomartin.jpeg" alt="AEW-Tech logo" height="40" />
+      <span class="ms-2 fw-bold text-white">AEW-Tech</span>
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu"
+      aria-controls="navMenu" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse justify-content-end" id="navMenu">
+      <ul class="navbar-nav mb-2 mb-lg-0 gap-3">
+        <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+        <li class="nav-item"><a class="nav-link" href="services.html">Services</a></li>
+        <li class="nav-item"><a class="nav-link" href="contacts.html">Contact</a></li>
+        <li class="nav-item"><a class="nav-link" href="global.html">Global Support</a></li>
+        <li class="nav-item"><a class="nav-link active" href="works.html">Works</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero-section text-center text-white py-5" style="background: linear-gradient(135deg, #0a1f4d, #143d8f);">
+  <div class="container" data-aos="fade-up">
+    <h1 class="fw-bold mb-3">Our Latest Works</h1>
+    <p class="lead mx-auto" style="max-width: 700px;">
+      Recent MRI and CT installations successfully completed by AEW-Tech — precision, reliability, and excellence in every project.
+    </p>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section class="works-list py-5">
+  <div class="container">
+    <!-- Project 1 -->
+    <div class="row align-items-center mb-5" data-aos="fade-up">
+      <div class="col-lg-6 mb-3 mb-lg-0">
+        <div class="ratio ratio-16x9 rounded overflow-hidden shadow-lg">
+          <video controls autoplay muted loop class="w-100 h-100">
+            <source src="images/WhatsApp Video 2025-10-29 at 16.58.06.mp4" type="video/mp4">
+          </video>
+        </div>
+      </div>
+      <div class="col-lg-6">
+        <h2 class="fw-bold mb-3 text-primary">GE Signa Ovation 0.35T Open MRI Installation</h2>
+        <p class="text-muted">
+          AEW-Tech successfully completed the installation and calibration of a GE Signa Ovation 0.35T Open MRI — delivering high-quality imaging with exceptional patient comfort and accessibility. Designed for musculoskeletal, neuro, and spine applications, this system combines reliability and flexibility, backed by AEW-Tech’s expertise in magnet ramp-up, preventive maintenance, and full-system upgrades.
+        </p>
+      </div>
+    </div>
+
+    <!-- Divider -->
+    <hr class="my-5 opacity-25">
+
+    <!-- Project 2 -->
+    <div class="row align-items-center flex-lg-row-reverse" data-aos="fade-up">
+      <div class="col-lg-6 mb-3 mb-lg-0">
+        <div class="ratio ratio-16x9 rounded overflow-hidden shadow-lg">
+          <video controls autoplay muted loop class="w-100 h-100">
+            <source src="images/WhatsApp Video 2025-10-29 at 16.58.10.mp4" type="video/mp4">
+          </video>
+        </div>
+      </div>
+      <div class="col-lg-6">
+        <h2 class="fw-bold mb-3 text-primary">GE LightSpeed CT Scanner Installation</h2>
+        <p class="text-muted">
+          Another AEW-Tech success: full installation and calibration of a GE LightSpeed CT Scanner. This fast, high-resolution system ensures accurate imaging for diagnostic and emergency applications. AEW-Tech provides installation, de-installation, maintenance, and upgrades for all major MRI, CT, and X-Ray systems.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="text-center py-5 bg-primary text-light" data-aos="fade-up">
+  <div class="container">
+    <h3 class="fw-bold mb-3">Need Assistance With Your Imaging System?</h3>
+    <p class="mb-4">Contact our support team for professional installation, calibration, or maintenance services.</p>
+    <a href="contacts.html" class="btn btn-light fw-semibold px-4 me-2">Request Service</a>
+    <a href="https://wa.me/13053001328" target="_blank" class="btn btn-outline-light fw-semibold px-4">💬 WhatsApp</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="bg-dark text-light text-center py-3">
+  <p class="mb-1">©️ 2025 AEW-Tech</p>
+  <div>
+    <a href="#" class="text-decoration-none text-info me-2">Privacy Policy</a>
+    <a href="#" class="text-decoration-none text-info">Terms of Service</a>
+  </div>
+</footer>
+
+<!-- Scripts -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+<script>
+AOS.init({ duration: 1000, once: true });
+</script>
+
+</body>
+</html>
