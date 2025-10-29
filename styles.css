@@ -1,606 +1,190 @@
 /* ------------------------------
    BASE
 ------------------------------ */
-body, html {
-    margin: 0;
-    padding: 0;
-    font-family: Inter, system-ui, Segoe UI, Roboto, Arial, sans-serif;
-    color: #0b1220;
+html, body {
+  margin: 0;
+  padding: 0;
+  font-family: Inter, system-ui, Segoe UI, Roboto, Arial, sans-serif;
+  color: #0b1220;
 }
-
-a {
-    text-decoration: none;
-    color: inherit;
-}
-
-a:hover {
-    color: #0a66b2;
-}
+a { text-decoration: none; color: inherit; }
+a:hover { color: #0a66b2; }
 
 /* ------------------------------
    VARIABLES / THEME
 ------------------------------ */
 :root {
-    --brand: #0a66b2;
-    --brand2: #0b8dda;
-    --ink: #0b1220;
-    --muted: #5b6474;
-    --soft: #f5f7fb;
-    --line: #e6ecf4;
-    --ok: #15a34a;
-    --cta: #105fb3;
-    --ctaH: #0a4a8a;
-    --radius: 16px;
+  --brand: #0a66b2;
+  --brand2: #0b8dda;
+  --ink: #0b1220;
+  --muted: #5b6474;
+  --soft: #f5f7fb;
+  --line: #e6ecf4;
+  --ok: #15a34a;
+  --cta: #105fb3;
+  --ctaH: #0a4a8a;
+  --radius: 16px;
 }
 
 /* ------------------------------
-   WRAPPER / GRID
+   NAV / HEADER
 ------------------------------ */
-.aew-wrap {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 20px;
-}
-
-.grid {
-    display: grid;
-    gap: 24px;
-}
-
-/* ------------------------------
-   HEADER / NAV
------------------------------- */
-.navbar {
-    position: relative;
-    z-index: 1000;
-    background-color: #fff !important;
-}
-
-.navbar-toggler {
-    border: 1px solid var(--line) !important;
-    padding: 0.25rem 0.5rem;
-}
-
-.navbar-toggler:focus {
-    box-shadow: 0 0 0 0.25rem rgba(10, 102, 178, 0.25) !important;
-}
-
-.navbar-toggler-icon {
-    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba(11,18,32,0.8)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
-}
-
-/* Mejorar el collapse en móvil */
-.navbar-collapse {
-    transition: all 0.3s ease;
-}
-
+.navbar { position: relative; z-index: 1000; background-color: #fff !important; }
+.navbar-brand img { height: 40px; }
+.navbar-collapse { transition: all .3s ease; }
 .nav-link {
-    font-weight: 500;
-    color: var(--ink) !important;
-    transition: color 0.3s ease;
-    padding: 0.5rem 0 !important;
-    margin: 0.25rem 0 !important;
+  font-weight: 500;
+  color: var(--ink) !important;
+  transition: color .3s ease;
+  padding: .5rem 0 !important;
+  margin: .25rem 0 !important;
+}
+.nav-link:hover, .nav-link.active { color: var(--brand) !important; }
+
+/* Menú en desktop: fila visible siempre */
+.nav-menu {
+  display: flex;
+  list-style: none;
+  gap: 2rem;
+  flex-direction: row;
+  align-items: center;
+  margin: 0;
 }
 
-.nav-link:hover,
-.nav-link.active {
-    color: var(--brand) !important;
-}
-
-/* Espaciado mejor en navbar */
-.navbar-nav {
-    gap: 0.5rem;
-}
-
-@media (max-width: 991px) {
-    .navbar-nav {
-        gap: 0;
-        padding-top: 1rem;
-        border-top: 1px solid var(--line);
-    }
-    
-    .nav-link {
-        padding: 0.75rem 0 !important;
-    }
-}
-
-/* ------------------------------
-   HERO SECTION (INDEX)
------------------------------- */
-.aew-hero {
-    position: relative;
-    background:
-        radial-gradient(1200px 600px at 80% -10%, rgba(11,102,178,.35), transparent 60%),
-        radial-gradient(900px 500px at -10% 20%, rgba(218, 135, 11, 0.25), transparent 60%),
-        linear-gradient(180deg, #eef6ff 0%, #ffffff 60%);
-    border-bottom: 1px solid var(--line);
-}
-
-.aew-hero .grid {
-    display: grid;
-    grid-template-columns: 1.1fr .9fr;
-    gap: 24px;
-    padding: 72px 0;
-    align-items: center;
-    position: relative;
-    z-index: 5;
-}
-
-.aew-eyebrow {
-    color: var(--brand);
-    font-weight: 700;
-    letter-spacing: .12em;
-    text-transform: uppercase;
-    font-size: 12px;
-    margin-bottom: 10px;
-}
-
-.aew-title {
-    font-size: 44px;
-    font-weight: 800;
-    margin-bottom: 14px;
-}
-
-.aew-sub {
-    font-size: 18px;
-    color: var(--muted);
-    margin-bottom: 26px;
-    max-width: 52ch;
-}
-
-.aew-cta {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 12px;
-    margin-bottom: 18px;
-}
-
-.btn {
-    display: inline-flex;
-    align-items: center;
-    gap: 10px;
-    padding: 14px 18px;
-    border-radius: 999px;
-    font-weight: 700;
-    border: 2px solid transparent;
-    transition: .18s ease;
-    text-decoration: none;
-    cursor: pointer;
-}
-
-.btn-primary {
-    background: var(--cta);
-    color: #fff;
-}
-
-.btn-primary:hover {
-    background: var(--ctaH);
-    transform: translateY(-2px);
-}
-
-.btn-ghost {
-    background: #fff;
-    border-color: var(--line);
-    color: var(--ink);
-}
-
-.btn-ghost:hover {
-    border-color: var(--brand);
-    color: var(--brand);
-    transform: translateY(-2px);
-}
-
-.aew-hero .shot {
-    aspect-ratio: 4 / 3;
-    border-radius: var(--radius);
-    overflow: hidden;
-    box-shadow: 0 10px 30px rgba(26, 60, 139, 0.12);
-    border: 1px solid var(--line);
-    background: #fff url('https://images.unsplash.com/photo-1581091215367-59ab6dcef1b4?q=80&w=1366&auto=format&fit=crop') center/cover no-repeat;
+/* Botón hamburguesa: oculto por defecto (desktop) */
+.menu-btn {
+  display: none !important;
+  border: 1px solid #dee2e6;
+  background: none;
+  cursor: pointer;
+  padding: .5rem .75rem;
+  border-radius: 4px;
+  font-size: 1.5rem;
 }
 
 /* ------------------------------
-   PILL STYLES
+   HERO
 ------------------------------ */
-.pills-container {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.75rem;
-    margin-top: 1.5rem;
-    position: relative;
-    z-index: 10;
+.hero-section {
+  position: relative;
+  background: url('images/background.jpg') center/cover no-repeat;
+  padding: 80px 20px;
+  border-radius: 12px;
+  text-align: center;
+  color: #ffffff;
+  overflow: hidden;
 }
-
-.pill { 
-    display: inline-block;
-    padding: 0.6rem 1.2rem;
-    border-radius: 999px;
-    background: linear-gradient(135deg, #3d8fff, #1e5bff);
-    color: #fff !important;
-    font-weight: 700;
-    font-size: 0.95rem;
-    box-shadow: 0 6px 20px rgba(62, 143, 255, 0.35);
-    transition: transform 0.2s, box-shadow 0.2s;
-    cursor: default;
-    white-space: nowrap;
-    border: 1px solid rgba(255, 255, 255, 0.2);
+.hero-section::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,.5);
+  z-index: 0;
 }
+.hero-section h1,
+.hero-section p,
+.hero-section .btn { position: relative; z-index: 1; }
+.hero-section h1 { font-size: 2.8rem; font-weight: 800; margin-bottom: 20px; }
+.hero-section p { font-size: 1.2rem; margin-bottom: 30px; }
 
+/* Pills */
+.pills-container { margin-top: 20px; }
+.pill {
+  background: linear-gradient(135deg, #3d8fff, #1e5bff);
+  color: #fff;
+  font-weight: 700;
+  padding: 6px 14px;
+  border-radius: 50px;
+  font-size: .9rem;
+  box-shadow: 0 6px 20px rgba(62,143,255,.35);
+  border: 1px solid rgba(255,255,255,.3);
+  transition: all .3s ease;
+  display: inline-block;
+  margin: 5px;
+}
 .pill:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 8px 28px rgba(62, 143, 255, 0.45);
-}
-
-/* Responsive pills */
-@media (max-width: 768px) {
-    .pills-container {
-        gap: 0.5rem;
-    }
-    
-    .pill {
-        font-size: 0.85rem;
-        padding: 0.5rem 1rem;
-    }
+  background: linear-gradient(135deg, #4d98ff, #2e6eff);
+  transform: translateY(-3px) scale(1.05);
+  box-shadow: 0 10px 30px rgba(62,143,255,.5);
+  border: 1px solid rgba(255,255,255,.5);
 }
 
 /* ------------------------------
    CAPABILITIES
 ------------------------------ */
-.aew-capabilities {
-    background: #fff;
-    border-top: 1px solid var(--line);
-    padding: 80px 20px;
+.capabilities .card {
+  border-radius: 12px;
+  padding: 25px;
+  box-shadow: 0 4px 20px rgba(0,0,0,.08);
+  transition: transform .2s;
+  border: none;
 }
-
-.aew-capabilities h2 {
-    font-size: 34px;
-    font-weight: 800;
-    color: var(--brand);
-    text-align: center;
-    margin-bottom: 10px;
-}
-
-.aew-capabilities p.sub {
-    color: var(--muted);
-    font-size: 17px;
-    text-align: center;
-    margin-bottom: 60px;
-}
-
-.cap-item {
-    border: 1px solid var(--line);
-    border-radius: 14px;
-    padding: 32px 24px;
-    background: #f9fafc;
-    box-shadow: 0 2px 8px rgba(0,0,0,.03);
-    transition: .25s;
-}
-
-.cap-item:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 6px 18px rgba(0,0,0,.06);
-}
-
-.cap-icon {
-    font-size: 40px;
-    color: var(--brand);
-    margin-bottom: 12px;
-    display: inline-block;
-}
-
-.cap-title {
-    font-weight: 700;
-    font-size: 18px;
-    margin-bottom: 8px;
-}
-
-.cap-desc {
-    color: var(--muted);
-    font-size: 15px;
-    line-height: 1.6;
-}
-
-/* ------------------------------
-   SERVICES SECTION
------------------------------- */
-.svc-hero, .svcA-hero {
-    text-align: center;
-    padding: 56px 16px 28px;
-}
-
-.svc-hero h1, .svcA-hero .copy h1 {
-    font-size: 42px;
-    margin-bottom: 10px;
-}
-
-.svc-hero p, .svcA-hero .copy p {
-    color: #4b5563;
-    font-size: 18px;
-}
-
-.svcA-hero {
-    background: #0b1a2a;
-    color: #fff;
-}
-
-.svcA-hero .wrap {
-    display: grid;
-    grid-template-columns: 1.05fr .95fr;
-    gap: 36px;
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 56px 20px;
-}
-
-.svcA-hero .photo {
-    min-height: 300px;
-    border-radius: 14px;
-    background: url('https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?q=80&w=1600&auto=format&fit=crop') center/cover;
-}
-
-.svcA-hero .btn {
-    display: inline-block;
-    margin: 6px 8px 0 0;
-    padding: 10px 18px;
-    border-radius: 999px;
-    border: 1px solid #66b1ff;
-    color: #66b1ff;
-    text-decoration: none;
-    font-weight: 600;
-    transition: all 0.2s;
-}
-
-.svcA-hero .btn:hover {
-    background: #66b1ff;
-    color: #0b1a2a;
-}
-
-.svcA-hero .btn.solid {
-    background: #66b1ff;
-    color: #0b1a2a;
-    border-color: #66b1ff;
-}
-
-.svcA-tiles {
-    background: #f7f9fc;
-    padding: 34px 0;
-}
-
-.svcA-tiles .grid {
-    max-width: 1200px;
-    margin: 0 auto;
-    display: grid;
-    gap: 16px;
-    grid-template-columns: repeat(3, 1fr);
-    padding: 0 20px;
-}
-
-.svcA-tiles .tile {
-    background: #fff;
-    border: 1px solid #e9eef5;
-    border-radius: 12px;
-    padding: 18px;
-    box-shadow: 0 10px 24px rgba(15,23,42,.05);
-    transition: all 0.2s;
-}
-
-.svcA-tiles .tile:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 12px 32px rgba(15,23,42,.1);
-}
-
-.svcA-tiles .ic {
-    font-size: 26px;
-}
-
-.svcA-tiles h3 {
-    margin: 8px 0 6px;
-}
-
-.svcA-tiles p {
-    color: #475569;
-    margin: 0 0 8px;
-}
-
-.svcA-tiles .lnk {
-    color: var(--brand);
-    text-decoration: none;
-    font-weight: 600;
-    transition: color 0.2s;
-}
-
-.svcA-tiles .lnk:hover {
-    color: var(--ctaH);
-}
-
-/* ------------------------------
-   CONTACT SECTION
------------------------------- */
-.container {
-    max-width: 1200px;
-    margin: 40px auto;
-    padding: 0 20px;
-}
-
-.aew-cta-wrap {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 12px;
-    justify-content: center;
-    margin-top: 10px;
-}
-
-.aew-cta {
-    display: inline-block;
-    padding: 12px 18px;
-    border-radius: 10px;
-    font-weight: 600;
-    text-decoration: none;
-    transition: all 0.2s;
-}
-
-.aew-call {
-    background: #0a66c2;
-    color: #fff;
-}
-
-.aew-call:hover {
-    background: #085aa4;
-    transform: translateY(-2px);
-}
-
-.aew-mail {
-    background: #1f2937;
-    color: #fff;
-}
-
-.aew-mail:hover {
-    background: #111827;
-    transform: translateY(-2px);
-}
-
-.aew-wa {
-    background: linear-gradient(90deg,#23d061,#25d366);
-    color: #fff;
-}
-
-.aew-wa:hover {
-    transform: translateY(-2px);
-    filter: brightness(0.95);
-}
-
-.map-container {
-    height: 400px;
-}
+.capabilities .card:hover { transform: translateY(-5px); }
+.capabilities .card h5 { font-weight: 700; margin-bottom: 10px; }
+.capabilities .card p { color: #475569; }
+.capabilities .card .icon { font-size: 2rem; margin-bottom: 10px; }
 
 /* ------------------------------
    FOOTER
 ------------------------------ */
 .aew-footer {
-    background: #0a0f1a;
-    color: #dce3ef;
-    text-align: center;
-    padding: 20px 0;
-    font-size: 14px;
+  background: #0a0f1a;
+  color: #dce3ef;
+  text-align: center;
+  padding: 20px 0;
+  font-size: 14px;
 }
-
-.aew-footer a {
-    color: #66b1ff;
-    margin: 0 6px;
-    text-decoration: none;
-    transition: color 0.2s;
-}
-
-.aew-footer a:hover {
-    text-decoration: underline;
-    color: #99ccff;
-}
+.aew-footer a { color: #66b1ff; margin: 0 6px; text-decoration: none; transition: color .2s; }
+.aew-footer a:hover { text-decoration: underline; color: #99ccff; }
 
 /* ------------------------------
-   RESPONSIVE
+   RESPONSIVE & MENU RESPONSIVE (FIX)
 ------------------------------ */
-@media (max-width: 900px) {
-    .aew-hero .grid {
-        grid-template-columns: 1fr;
-        padding: 46px 0;
-    }
-    
-    .aew-title {
-        font-size: 34px;
-    }
-    
-    .svcA-hero .wrap {
-        grid-template-columns: 1fr;
-    }
-    
-    .svcA-tiles .grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
-    
-    .aew-capabilities {
-        padding: 60px 20px;
-    }
-}
 
-@media (max-width: 768px) {
-    .aew-hero .shot {
-        display: none;
-    }
-    
-    .aew-title {
-        font-size: 28px;
-    }
-    
-    .aew-sub {
-        font-size: 16px;
-    }
-    
-    .aew-hero .grid {
-        padding: 36px 0;
-    }
-}
-
-@media (max-width: 560px) {
-    .svcA-tiles .grid {
-        grid-template-columns: 1fr;
-    }
-    
-    .aew-cta {
-        flex-direction: column;
-        gap: 8px;
-    }
-    
-    .btn {
-        width: 100%;
-        justify-content: center;
-    }
-    
-    .aew-title {
-        font-size: 24px;
-    }
-}
-/* Menu responsive */
-@media (max-width: 768px) {
+/* Mostrar hamburguesa y convertir el menú a colapsable en ≤991px */
+@media (max-width: 991px) {
   .menu-btn {
-    display: block !important;
+    display: inline-block !important;
+    z-index: 1001;
   }
 
-  #navMenu {
+  /* El contenedor del menú pasa a ser 'off-canvas simple' */
+  .nav-menu {
     position: absolute;
-    top: 70px;
+    top: 70px;     /* altura aprox. del header */
     left: 0;
     right: 0;
     background-color: #fff;
     flex-direction: column !important;
     gap: 0 !important;
-    max-height: 0 !important;
+    max-height: 0;
     overflow: hidden;
-    transition: max-height 0.3s ease-in-out;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-    z-index: 999;
+    transition: max-height .3s ease-in-out;
+    box-shadow: 0 4px 6px rgba(0,0,0,.1);
+    z-index: 1000;
+    padding: 0;
+    margin: 0;
+    border-top: 1px solid var(--line);
   }
 
-  #navMenu.active {
-    max-height: 500px !important;
+  .nav-menu.active {
+    max-height: 500px; /* suficiente para mostrar los li */
   }
 
-  #navMenu li {
-    padding: 1rem 2rem;
+  .nav-menu li {
+    padding: 1rem 1.5rem;
+    width: 100%;
     border-bottom: 1px solid #e6ecf4;
   }
 
-  #navMenu .nav-link {
+  .nav-menu .nav-link {
     display: block;
+    width: 100%;
   }
-}
-/* === FIX: Ocultar menú hamburguesa en pantallas grandes === */
-.menu-btn {
-  display: none; /* Oculto por defecto (en PC, laptop, etc.) */
 }
 
-/* Mostrar solo en pantallas menores a 992px */
-@media (max-width: 992px) {
-  .menu-btn {
-    display: block !important;
-  }
+/* Ajustes pequeños adicionales */
+@media (max-width: 768px) {
+  .hero-section h1 { font-size: 2.2rem; }
+  .hero-section p { font-size: 1rem; }
 }

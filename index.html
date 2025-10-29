@@ -1,179 +1,44 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>AEW-Tech | Home</title>
-<link rel="icon" href="images/logoaewcortado.jpeg" type="image/png">
+<link rel="icon" href="images/logoaewcortado.jpeg" type="image/png" />
 
 <!-- Bootstrap CSS -->
-<link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet" />
 
 <!-- AOS Animation Library -->
-<link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet" />
 
-<style>
-body { font-family: 'Inter', sans-serif; background: #f8f9fa; color: #0b1220; }
+<!-- TU CSS -->
+<link rel="stylesheet" href="styles.css" />
+<!-- Inter font (misma familia en todo el sitio) -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
-/* Navbar fixes */
-.navbar { transition: box-shadow 0.3s ease; }
-.navbar-brand img { height: 40px; }
-
-/* Asegura que el toggle sea visible */
-.navbar-toggler { 
-  border: 1px solid #dee2e6 !important;
-  padding: 0.25rem 0.5rem;
-}
-.navbar-toggler:focus { 
-  box-shadow: 0 0 0 0.25rem rgba(62, 143, 255, 0.25) !important;
-}
-
-/* Menu dropdown en móvil */
-.navbar-collapse { 
-  transition: all 0.3s ease;
-}
-
-.nav-link { 
-  font-weight: 500;
-  transition: color 0.3s ease;
-}
-.nav-link:hover,
-.nav-link.active { 
-  color: #3d8fff !important;
-}
-
-/* Hero */
-.hero-section {
-  position: relative;
-  background: url('images/background.jpg') center/cover no-repeat;
-  padding: 80px 20px;
-  border-radius: 12px;
-  text-align: center;
-  color: #ffffff;
-  overflow: hidden;
-}
-.hero-section::before {
-  content: "";
-  position: absolute;
-  top: 0; left: 0;
-  width: 100%; height: 100%;
-  background: rgba(0,0,0,0.5);
-  z-index: 0;
-}
-.hero-section h1,
-.hero-section p,
-.hero-section .btn {
-  position: relative;
-  z-index: 1;
-}
-.hero-section h1 { font-size: 2.8rem; font-weight: 800; margin-bottom: 20px; }
-.hero-section p { font-size: 1.2rem; margin-bottom: 30px; }
-.hero-section .btn { border-radius: 50px; font-weight: 600; }
-
-/* Quick Pills */
-.pill { 
-  background: linear-gradient(135deg, #3d8fff, #1e5bff);
-  color: #fff;
-  font-weight: 700;
-  padding: 6px 14px;
-  border-radius: 50px;
-  font-size: 0.9rem;
-  box-shadow: 0 6px 20px rgba(62,143,255,0.35);
-  border: 1px solid rgba(255,255,255,0.3);
-  transition: all 0.3s ease;
-  cursor: pointer;
-  display: inline-block;
-  margin: 5px;
-}
-.pill:hover {
-  background: linear-gradient(135deg, #4d98ff, #2e6eff);
-  transform: translateY(-3px) scale(1.05);
-  box-shadow: 0 10px 30px rgba(62,143,255,0.5);
-  border: 1px solid rgba(255,255,255,0.5);
-}
-
-.pills-container { margin-top: 20px; }
-
-/* Capabilities Cards */
-.capabilities .card { 
-  border-radius: 12px; 
-  padding: 25px;
-  box-shadow: 0 4px 20px rgba(0,0,0,.08);
-  transition: transform .2s;
-  border: none;
-}
-.capabilities .card:hover { transform: translateY(-5px); }
-.capabilities .card h5 { font-weight: 700; margin-bottom: 10px; }
-.capabilities .card p { color: #475569; }
-.capabilities .card .icon { font-size: 2rem; margin-bottom: 10px; }
-
-/* CTA */
-.cta-section { margin-top: 40px; }
-@media (max-width: 992px) {
-  .menu-btn {
-    display: block !important;
-  }
-
-  #navMenu {
-    position: absolute;
-    top: 100%;
-    left: 0;
-    right: 0;
-    background-color: #fff;
-    flex-direction: column !important;
-    gap: 0 !important;
-    max-height: 0;
-    overflow: hidden;
-    transition: max-height 0.3s ease-in-out;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-    z-index: 999;
-    padding: 0;
-    margin: 0;
-  }
-
-  #navMenu.active {
-    max-height: 500px;
-  }
-
-  #navMenu li {
-    padding: 1rem 1.5rem;
-    border-bottom: 1px solid #e6ecf4;
-  }
-
-  #navMenu .nav-link {
-    display: block;
-    padding: 0;
-  }
-}
-</style>
 </head>
 <body>
 
-<!-- NAVBAR FUNCIONAL -->
+<!-- NAVBAR -->
 <nav class="navbar navbar-expand-lg navbar-light bg-white sticky-top shadow-sm">
   <div class="container-fluid px-3 px-lg-5">
     <a class="navbar-brand d-flex align-items-center" href="index.html">
-      <img src="images/logomartin.jpeg" alt="AEW-Tech logo" height="40">
+      <img src="images/logomartin.jpeg" alt="AEW-Tech logo" height="40" />
       <span class="ms-2 fw-bold">AEW-Tech</span>
     </a>
 
-<button class="menu-btn" id="menuBtn" aria-label="Toggle navigation" style="border: 1px solid #dee2e6; background: none; cursor: pointer; padding: 0.5rem 0.75rem; border-radius: 4px; font-size: 1.5rem;">
-  ☰
-</button>
+    <!-- Botón hamburguesa (controlado por CSS: se oculta en desktop, aparece en móvil) -->
+    <button class="menu-btn" id="menuBtn" aria-label="Toggle navigation" aria-expanded="false" aria-controls="navMenu">☰</button>
 
-<ul class="nav-menu" id="navMenu" style="display: flex; list-style: none; gap: 2rem; flex-direction: row;">
-      <li class="nav-item">
-        <a class="nav-link active" aria-current="page" href="index.html">Home</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="services.html">Services</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="contacts.html">Contact</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="global.html">Global Support</a>
-      </li>
+    <!-- Menú (fila en desktop; colapsable en móvil) -->
+    <ul class="nav-menu" id="navMenu">
+      <li class="nav-item"><a class="nav-link active" aria-current="page" href="index.html">Home</a></li>
+      <li class="nav-item"><a class="nav-link" href="services.html">Services</a></li>
+      <li class="nav-item"><a class="nav-link" href="contacts.html">Contact</a></li>
+      <li class="nav-item"><a class="nav-link" href="global.html">Global Support</a></li>
     </ul>
   </div>
 </nav>
@@ -238,7 +103,7 @@ body { font-family: 'Inter', sans-serif; background: #f8f9fa; color: #0b1220; }
   </div>
 </section>
 
-<!-- CALL TO ACTION -->
+<!-- CTA -->
 <section class="cta-section text-center text-light py-5" style="background: linear-gradient(135deg, #1e5bff, #3d8fff);" data-aos="fade-up">
   <div class="container">
     <h3 class="fw-bold mb-3">Need Immediate Assistance?</h3>
@@ -266,30 +131,39 @@ body { font-family: 'Inter', sans-serif; background: #f8f9fa; color: #0b1220; }
 
 <script>
   document.addEventListener('DOMContentLoaded', () => {
-    
-    // Menu toggle
+    // Toggle menú móvil
     const menuBtn = document.getElementById('menuBtn');
     const navMenu = document.getElementById('navMenu');
     const navLinks = document.querySelectorAll('.nav-link');
 
-    // Toggle menú
-    menuBtn.addEventListener('click', function() {
-      navMenu.classList.toggle('active');
+    const closeMenu = () => {
+      navMenu.classList.remove('active');
+      menuBtn.setAttribute('aria-expanded', 'false');
+    };
+
+    menuBtn.addEventListener('click', () => {
+      const isOpen = navMenu.classList.toggle('active');
+      menuBtn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
     });
 
-    // Cerrar menú al hacer clic
+    // Cerrar menú al hacer clic en un enlace (solo móvil)
     navLinks.forEach(link => {
-      link.addEventListener('click', function() {
-        navMenu.classList.remove('active');
+      link.addEventListener('click', () => {
+        if (window.innerWidth <= 991) closeMenu();
       });
     });
 
-    // Inicializar AOS
+    // Si se redimensiona a desktop, asegurar menú cerrado (y botón en estado correcto)
+    window.addEventListener('resize', () => {
+      if (window.innerWidth > 991) closeMenu();
+    });
+
+    // AOS
     if (typeof AOS !== 'undefined') {
       AOS.init({ duration: 1000, once: true, offset: 100 });
     }
 
-    // Navbar sombra al scroll
+    // Sombra navbar al hacer scroll
     window.addEventListener('scroll', function () {
       const navbar = document.querySelector('.navbar');
       if (window.scrollY > 50) {
@@ -298,7 +172,6 @@ body { font-family: 'Inter', sans-serif; background: #f8f9fa; color: #0b1220; }
         navbar.classList.remove('shadow');
       }
     });
-
   });
 </script>
 

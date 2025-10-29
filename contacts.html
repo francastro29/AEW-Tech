@@ -1,112 +1,63 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Contact | AEW-Tech</title>
-<link rel="icon" href="images/logoaewcortado.jpeg" type="image/png">
+<link rel="icon" href="images/logoaewcortado.jpeg" type="image/png" />
 
 <!-- Bootstrap CSS -->
-<link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet" />
 
-<!-- Tu CSS personalizado -->
-<link rel="stylesheet" href="style.css">
+<!-- Tus estilos globales (incluye el fix del menú responsivo) -->
+<link rel="stylesheet" href="styles.css" />
 
+<!-- Inter font (misma familia en todo el sitio) -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+
+<!-- Estilos específicos de esta página -->
 <style>
-body { font-family: 'Inter', sans-serif; background: #f8f9fa; color: #0b1220; }
+  body { font-family: 'Inter', sans-serif; background: #f8f9fa; color: #0b1220; }
 
-.navbar-brand img { height: 40px; }
+  .navbar-brand img { height: 40px; }
 
-.contact-card { border-radius: 12px; padding: 30px; background: #fff; box-shadow: 0 4px 20px rgba(0,0,0,.08); }
-.contact-btn { border-radius: 50px; font-weight: 600; }
-.map-card { border-radius: 12px; overflow: hidden; height: 100%; box-shadow: 0 4px 20px rgba(0,0,0,.08); }
-
-/* Navbar fixes */
-.navbar { transition: box-shadow 0.3s ease; }
-
-.navbar-toggler { 
-  border: 1px solid #dee2e6 !important;
-  padding: 0.25rem 0.5rem;
-}
-.navbar-toggler:focus { 
-  box-shadow: 0 0 0 0.25rem rgba(62, 143, 255, 0.25) !important;
-}
-
-.nav-link { 
-  font-weight: 500;
-  transition: color 0.3s ease;
-}
-.nav-link:hover,
-.nav-link.active { 
-  color: #3d8fff !important;
-}
-
-/* Menu responsive */
-@media (max-width: 992px) {
-  .menu-btn {
-    display: block !important;
+  .contact-card {
+    border-radius: 12px;
+    padding: 30px;
+    background: #fff;
+    box-shadow: 0 4px 20px rgba(0,0,0,.08);
   }
-
-  #navMenu {
-    position: absolute;
-    top: 100%;
-    left: 0;
-    right: 0;
-    background-color: #fff;
-    flex-direction: column !important;
-    gap: 0 !important;
-    max-height: 0;
+  .contact-btn { border-radius: 50px; font-weight: 600; }
+  .map-card {
+    border-radius: 12px;
     overflow: hidden;
-    transition: max-height 0.3s ease-in-out;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-    z-index: 999;
-    padding: 0;
-    margin: 0;
+    height: 100%;
+    box-shadow: 0 4px 20px rgba(0,0,0,.08);
   }
-
-  #navMenu.active {
-    max-height: 500px;
-  }
-
-  #navMenu li {
-    padding: 1rem 1.5rem;
-    border-bottom: 1px solid #e6ecf4;
-  }
-
-  #navMenu .nav-link {
-    display: block;
-    padding: 0;
-  }
-}
 </style>
 </head>
 <body>
 
-<!-- NAVBAR FUNCIONAL -->
+<!-- NAVBAR -->
 <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm sticky-top">
   <div class="container-fluid px-3 px-lg-5">
     <a class="navbar-brand d-flex align-items-center" href="index.html">
-      <img src="images/logomartin.jpeg" alt="AEW-Tech logo" height="40">
+      <img src="images/logomartin.jpeg" alt="AEW-Tech logo" height="40" />
       <span class="ms-2 fw-bold">AEW-Tech</span>
     </a>
 
-    <button class="menu-btn" id="menuBtn" aria-label="Toggle navigation" style="border: 1px solid #dee2e6; background: none; cursor: pointer; padding: 0.5rem 0.75rem; border-radius: 4px; font-size: 1.5rem;">
-      ☰
-    </button>
+    <!-- Botón hamburguesa (se muestra solo ≤991px por CSS global) -->
+    <button class="menu-btn" id="menuBtn" aria-label="Toggle navigation" aria-expanded="false" aria-controls="navMenu">☰</button>
 
-    <ul class="nav-menu" id="navMenu" style="display: flex; list-style: none; gap: 2rem; flex-direction: row;">
-      <li class="nav-item">
-        <a class="nav-link" href="index.html">Home</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="services.html">Services</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link active" href="contacts.html">Contact</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="global.html">Global Support</a>
-      </li>
+    <!-- Menú -->
+    <ul class="nav-menu" id="navMenu">
+      <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+      <li class="nav-item"><a class="nav-link" href="services.html">Services</a></li>
+      <li class="nav-item"><a class="nav-link active" href="contacts.html">Contact</a></li>
+      <li class="nav-item"><a class="nav-link" href="global.html">Global Support</a></li>
     </ul>
   </div>
 </nav>
@@ -152,40 +103,43 @@ body { font-family: 'Inter', sans-serif; background: #f8f9fa; color: #0b1220; }
   </div>
 </footer>
 
-<!-- Bootstrap JS Bundle -->
+<!-- JS -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/bootstrap.bundle.min.js"></script>
-
-<!-- Script del menú hamburguesa -->
 <script>
   document.addEventListener('DOMContentLoaded', () => {
-    
-    // Menu toggle
+    // Toggle menú móvil
     const menuBtn = document.getElementById('menuBtn');
     const navMenu = document.getElementById('navMenu');
     const navLinks = document.querySelectorAll('.nav-link');
 
-    // Toggle menú
-    menuBtn.addEventListener('click', function() {
-      navMenu.classList.toggle('active');
+    const closeMenu = () => {
+      navMenu.classList.remove('active');
+      menuBtn.setAttribute('aria-expanded', 'false');
+    };
+
+    menuBtn.addEventListener('click', () => {
+      const isOpen = navMenu.classList.toggle('active');
+      menuBtn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
     });
 
-    // Cerrar menú al hacer clic en un enlace
+    // Cerrar al hacer clic en un enlace (solo móvil)
     navLinks.forEach(link => {
-      link.addEventListener('click', function() {
-        navMenu.classList.remove('active');
+      link.addEventListener('click', () => {
+        if (window.innerWidth <= 991) closeMenu();
       });
     });
 
-    // Navbar sombra al scroll
-    window.addEventListener('scroll', function () {
-      const navbar = document.querySelector('.navbar');
-      if (window.scrollY > 50) {
-        navbar.classList.add('shadow');
-      } else {
-        navbar.classList.remove('shadow');
-      }
+    // Cerrar si se redimensiona a desktop
+    window.addEventListener('resize', () => {
+      if (window.innerWidth > 991) closeMenu();
     });
 
+    // Sombra navbar al hacer scroll
+    window.addEventListener('scroll', function () {
+      const navbar = document.querySelector('.navbar');
+      if (window.scrollY > 50) navbar.classList.add('shadow');
+      else navbar.classList.remove('shadow');
+    });
   });
 </script>
 
