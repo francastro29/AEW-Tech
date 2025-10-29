@@ -146,7 +146,7 @@ p, .nav-link { font-size: var(--step-0); }
   position: relative;
   background: 
     linear-gradient(180deg, rgba(10,17,35,.35) 0%, rgba(10,17,35,.6) 100%),
-    url('images/background.jpg') center/cover no-repeat;
+    url('images/fondo2.jpeg') center/cover no-repeat;
   color:#fff;
   padding: clamp(56px, 8vw, 96px) 20px;
   border-radius: var(--radius-xl);
